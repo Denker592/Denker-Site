@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Фото с белой полоской, кнопками и квадратом</title>
+    <title>Denker Site</title>
+
+    <!-- Иконка сайта -->
+    <link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
+
     <style>
         body {
             margin: 0;
@@ -11,7 +15,6 @@
             font-family: Arial, sans-serif;
         }
 
-        /* Синяя полоска сверху */
         .top-bar {
             width: 100%;
             height: 70px;
@@ -22,12 +25,10 @@
             cursor: pointer;
         }
 
-        /* Текст внутри синей полоски */
-        .site-text {
-            color: #fff;
-            font-size: 24px;
+        .top-bar span {
+            color: white;
+            font-size: 28px;
             font-weight: bold;
-            user-select: none;
         }
 
         .black-bar {
@@ -51,7 +52,6 @@
             align-items: flex-start;
         }
 
-        /* Первая фотка поднята выше */
         .photo {
             max-width: 200px;
             height: auto;
@@ -66,10 +66,9 @@
             align-items: flex-start;
         }
 
-        /* Белая полоска с кнопками */
         .right-bar {
             background-color: #f8f8f8;
-            width: 80%;
+            width: 90%;
             height: 100px;
             border-radius: 15px;
             box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
@@ -97,11 +96,10 @@
             margin: 20px 0;
         }
 
-        /* Квадрат под черной полоской */
         .square {
             background-color: #f8f8f8;
-            width: 350px;
-            height: 120px;
+            width: 300px;
+            height: 100px;
             border-radius: 15px;
             border: 2px solid #000;
             display: flex;
@@ -109,6 +107,7 @@
             padding: 0 15px;
             margin-left: 15px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
         .square:hover {
@@ -126,14 +125,24 @@
             font-weight: bold;
             color: #000;
             margin-left: 20px;
-            transition: transform 0.3s ease;
         }
     </style>
+
+    <script>
+        // при клике на синюю полоску или текст → переход на главную страницу
+        function goHome() {
+            window.location.href = "/Denker-Site/index.html";
+        }
+
+        // при клике на квадрат → переход на страницу /games
+        function goGames() {
+            window.location.href = "/Denker-Site/games/index.html";
+        }
+    </script>
 </head>
 <body>
-    <!-- Синяя полоска кликабельная -->
-    <div class="top-bar" onclick="location.href='../index.html';">
-        <div class="site-text">DenkerSite</div>
+    <div class="top-bar" onclick="goHome()">
+        <span>DenkerSite</span>
     </div>
 
     <div class="text-top">Привет! Это все ссылки Denker'a</div>
@@ -157,8 +166,8 @@
                 <a href="https://sketchfab.com/Denker592" target="_blank">
                     <img src="https://i.ibb.co/KPP634g/Sketchfab.png" alt="Sketchfab">
                 </a>
-                <a href="games/index.html" target="_blank">
-                    <img src="https://i.ibb.co/XNQdRrx/Roblox.gif" alt="Игры" style="max-height:40px;">
+                <a href="https://www.roblox.com/users/8453743220/profile" target="_blank">
+                    <img src="https://i.ibb.co/XNQdRrx/Roblox.gif" alt="Roblox">
                 </a>
             </div>
         </div>
@@ -170,7 +179,7 @@
         Подписывайтесь на все каналы! Ссылочки есть немного выше!
     </div>
 
-    <div class="square">
+    <div class="square" onclick="goGames()">
         <img src="https://i.ibb.co/cSXdw4pp/559-20250829135801.png" alt="Иконка">
         <div class="square-text">Игры</div>
     </div>

@@ -11,8 +11,8 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
             background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
         }
 
         .top-bar {
@@ -30,17 +30,77 @@
             font-size: 28px;
             font-weight: bold;
         }
+
+        /* Текст под синей полоской */
+        .games-text {
+            text-align: center;
+            font-size: 48px; /* увеличенный размер шрифта */
+            font-weight: bold;
+            color: #000;
+            margin: 20px 0;
+        }
+
+        .game-button {
+            margin: 30px 0 0 30px;
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .game-button:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+        }
+
+        .game-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 250px;
+            padding: 10px;
+            background: #f8f8f8;
+            border-radius: 10px;
+            border: 2px solid #000;
+        }
+
+        .game-box img {
+            width: 100%;
+            height: auto;
+        }
+
+        .game-box span {
+            margin-top: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            text-align: center;
+        }
     </style>
 
     <script>
         function goHome() {
             window.location.href = "https://denker592.github.io/Denker-Site/";
         }
+
+        function openFlappyBird() {
+            window.location.href = "/games/flappybird.html";
+        }
     </script>
 </head>
 <body>
     <div class="top-bar" onclick="goHome()">
         <span>DenkerSite</span>
+    </div>
+
+    <!-- Текст "Игры" под синей полоской -->
+    <div class="games-text">Игры</div>
+
+    <div class="game-button" onclick="openFlappyBird()">
+        <div class="game-box">
+            <img src="https://i.ibb.co/Zz9k4mQh/Flappy-Bird-1-5.png" alt="FlappyBird 1.5">
+            <span>FlappyBird 1.5</span>
+        </div>
     </div>
 </body>
 </html>

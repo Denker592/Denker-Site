@@ -31,7 +31,7 @@ body {
     font-weight: bold;
 }
 
-/* Текст под синей полоской */
+/* Заголовки */
 .games-text {
     text-align: center;
     font-size: 48px;
@@ -40,13 +40,13 @@ body {
     margin: 20px 0 10px 0;
 }
 
-/* Текст Scratch игры */
-.scratch-text {
+.scratch-text,
+.python-text {
     text-align: center;
     font-size: 28px;
     font-weight: bold;
     color: #333;
-    margin: 0 0 20px 0;
+    margin: 20px 0;
 }
 
 /* Контейнер для игр */
@@ -54,7 +54,7 @@ body {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-    justify-content: center; /* Центрируем на мобильных */
+    justify-content: center;
     margin: 20px;
 }
 
@@ -107,7 +107,8 @@ body {
     .games-text {
         font-size: 32px;
     }
-    .scratch-text {
+    .scratch-text,
+    .python-text {
         font-size: 20px;
     }
     .game-box {
@@ -135,6 +136,10 @@ function openMinecraftClicker() {
 
 function openFruitClicker() {
     window.location.href = "https://denker592.github.io/Denker-Site/games/FruitClicker/";
+}
+
+function openMemorize() {
+    window.location.href = "https://denker592.github.io/Denker-Site/games/Python/Memorize/";
 }
 </script>
 </head>
@@ -171,5 +176,19 @@ function openFruitClicker() {
         </div>
     </div>
 </div>
+
+<!-- Новый раздел Python игр -->
+<div class="python-text">Python игры</div>
+
+<div class="games-container">
+    <!-- Memorize -->
+    <div class="game-button" onclick="openMemorize()">
+        <div class="game-box">
+            <img src="https://i.ibb.co/KpNbgsFr/553-20250828102623.png" alt="Memorize">
+            <span>Memorize</span>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

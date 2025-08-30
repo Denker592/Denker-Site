@@ -54,7 +54,7 @@ body {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-    justify-content: flex-start; /* ВЫРАВНИВАНИЕ ВЛЕВО */
+    justify-content: center; /* Центрируем на мобильных */
     margin: 20px;
 }
 
@@ -74,7 +74,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 250px; /* размер кнопки одинаковый */
+    width: 250px;
     padding: 10px;
     background: #f8f8f8;
     border-radius: 10px;
@@ -93,6 +93,30 @@ body {
     font-weight: bold;
     color: #000;
     text-align: center;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 600px) {
+    .top-bar {
+        height: 60px;
+        padding-left: 10px;
+    }
+    .top-bar span {
+        font-size: 22px;
+    }
+    .games-text {
+        font-size: 32px;
+    }
+    .scratch-text {
+        font-size: 20px;
+    }
+    .game-box {
+        width: 90%;
+        max-width: 250px;
+    }
+    .game-box span {
+        font-size: 20px;
+    }
 }
 </style>
 
@@ -119,7 +143,6 @@ function openFruitClicker() {
     <span>DenkerSite</span>
 </div>
 
-<!-- Текст "Игры" под синей полоской -->
 <div class="games-text">Игры</div>
 <div class="scratch-text">Scratch игры</div>
 

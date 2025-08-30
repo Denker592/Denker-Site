@@ -118,7 +118,7 @@ body {
     border-radius: 4px;
 }
 
-/* Внешний контейнер фото - фиксируем хитбокс */
+/* Внешний контейнер фото */
 .image-wrapper {
     flex: 0 0 auto;
     width: 300px;   
@@ -143,14 +143,7 @@ body {
     transform: scale(1.05);
 }
 
-/* Адаптив для мобильных */
-@media (max-width: 600px) {
-    .big-image {
-        width: 250px;
-    }
-}
-
-/* Стили для увеличенной фотографии (попап) */
+/* Попап для увеличенной фотографии */
 #overlay {
     position: fixed;
     top: 0;
@@ -189,6 +182,29 @@ body {
 #closeBtn:hover {
     transform: scale(1.1);
 }
+
+/* Медиазапросы для телефонов */
+@media (max-width: 768px) {
+    .top-bar span { font-size: 22px; }
+    .install-button {
+        font-size: 18px;
+        padding: 10px 20px;
+        top: 70px;
+        right: 10px;
+    }
+    .game-name { font-size: 32px; }
+    .image-container img { width: 140px; }
+    .description { font-size: 14px; max-width: 90%; }
+    .main-container { flex-direction: column; margin: 10px; }
+    .big-image-container { margin-left: 10px; gap: 15px; }
+    .image-wrapper { width: 200px; }
+    .big-image { width: 100%; }
+}
+@media (max-width: 480px) {
+    .game-name { font-size: 28px; }
+    .description { font-size: 12px; }
+    .image-wrapper { width: 160px; }
+}
 </style>
 
 <script>
@@ -203,7 +219,7 @@ function goHome() {
     <span>DenkerSite</span>
 </div>
 
-<!-- Кнопка Установить с прямым скачиванием -->
+<!-- Кнопка Установить -->
 <button id="installBtn" class="install-button">Установить</button>
 
 <div class="main-container">
@@ -240,7 +256,7 @@ function goHome() {
 </div>
 
 <script>
-// Скачивание файла при нажатии на кнопку "Установить"
+// Скачивание файла
 document.getElementById("installBtn").onclick = function() {
     const link = document.createElement("a");
     link.href = "https://www.dropbox.com/scl/fi/j2ufzquewylih77k4jtjm/Memorize.exe?rlkey=qsx9maq4s6ltrmimz8cclfwba&dl=1";
@@ -248,7 +264,7 @@ document.getElementById("installBtn").onclick = function() {
     link.click();
 };
 
-// Открытие попапа для любой фотографии
+// Попап для фото
 const bigImages = document.querySelectorAll(".big-image");
 const overlay = document.getElementById("overlay");
 const overlayImage = document.getElementById("overlayImage");
@@ -261,11 +277,10 @@ bigImages.forEach(img => {
     };
 });
 
-// Закрытие попапа по кнопке крестик
 closeBtn.onclick = function(event) {
     overlay.style.display = "none";
     event.stopPropagation();
-}
+};
 </script>
 
 </body>

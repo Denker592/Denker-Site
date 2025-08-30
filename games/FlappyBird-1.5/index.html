@@ -1,117 +1,124 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Denker Site</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Denker Site</title>
 
-    <!-- Иконка сайта -->
-    <link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
+<!-- Иконка сайта -->
+<link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
 
-    <style>
-        body {
-            margin: 0;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
 
-        .top-bar {
-            width: 100%;
-            height: 70px;
-            background-color: #007BFF;
-            display: flex;
-            align-items: center;
-            padding-left: 20px;
-            cursor: pointer;
-        }
+.top-bar {
+    width: 100%;
+    height: 70px;
+    background-color: #007BFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
 
-        .top-bar span {
-            color: white;
-            font-size: 28px;
-            font-weight: bold;
-        }
+.top-bar span {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        /* Текст под синей полоской */
-        .games-text {
-            text-align: center;
-            font-size: 48px;
-            font-weight: bold;
-            color: #000;
-            margin: 20px 0 10px 0;
-        }
+.bottom-text {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
 
-        /* Текст Scratch игры */
-        .scratch-text {
-            text-align: center;
-            font-size: 28px; /* уменьшенный размер */
-            font-weight: bold;
-            color: #333;
-            margin: 0 0 20px 0;
-        }
+.bottom-text img {
+    width: 50px;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 5px;
+}
 
-        .game-button {
-            margin: 30px 0 0 30px;
-            display: inline-block;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.bottom-text span {
+    font-size: 18px;
+    font-weight: bold;
+}
 
-        .game-button:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.3);
-        }
+.iframe-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
 
-        .game-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 250px;
-            padding: 10px;
-            background: #f8f8f8;
-            border-radius: 10px;
-            border: 2px solid #000;
-        }
+#project-iframe {
+    width: 900px;
+    height: 600px;
+    border: 3px solid black;
+    border-radius: 15px;
+}
+</style>
 
-        .game-box img {
-            width: 100%;
-            height: auto;
-        }
+<script>
+let iframeElement;
 
-        .game-box span {
-            margin-top: 10px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #000;
-            text-align: center;
-        }
-    </style>
+function goHome() {
+    window.location.href = "https://denker592.github.io/Denker-Site/";
+}
 
-    <script>
-        function goHome() {
-            window.location.href = "https://denker592.github.io/Denker-Site/";
-        }
+function openFullscreen() {
+    if (iframeElement.requestFullscreen) {
+        iframeElement.requestFullscreen();
+    } else if (iframeElement.webkitRequestFullscreen) {
+        iframeElement.webkitRequestFullscreen();
+    } else if (iframeElement.msRequestFullscreen) {
+        iframeElement.msRequestFullscreen();
+    }
+}
 
-        function openFlappyBird() {
-            window.location.href = "https://denker592.github.io/Denker-Site/games/FlappyBird-1.5/";
-        }
-    </script>
+// Перезапуск iframe при входе/выходе из fullscreen
+function reloadIframe() {
+    iframeElement.src = iframeElement.src;
+}
+
+window.onload = function() {
+    iframeElement = document.getElementById("project-iframe");
+
+    document.addEventListener("fullscreenchange", reloadIframe);
+    document.addEventListener("webkitfullscreenchange", reloadIframe);
+    document.addEventListener("mozfullscreenchange", reloadIframe);
+    document.addEventListener("MSFullscreenChange", reloadIframe);
+};
+</script>
 </head>
+
 <body>
-    <div class="top-bar" onclick="goHome()">
-        <span>DenkerSite</span>
-    </div>
+<div class="top-bar">
+    <span onclick="goHome()">DenkerSite</span>
+    <span onclick="openFullscreen()">На весь экран</span>
+</div>
 
-    <!-- Текст "Игры" под синей полоской -->
-    <div class="games-text">Игры</div>
-    <!-- Новый текст Scratch игры -->
-    <div class="scratch-text">Scratch игры</div>
+<div class="bottom-text">
+    <span>Нажмите на</span>
+    <img src="https://i.ibb.co/GvrLj0J8/560-20250829215010.png" alt="start">
+    <span>чтобы начать проект</span>
+    <span>Нажмите на</span>
+    <img src="https://i.ibb.co/CKYTSgz4/560-20250829215132.png" alt="stop">
+    <span>чтобы завершить проект</span>
+</div>
 
-    <div class="game-button" onclick="openFlappyBird()">
-        <div class="game-box">
-            <img src="https://i.ibb.co/Zz9k4mQh/Flappy-Bird-1-5.png" alt="FlappyBird 1.5">
-            <span>FlappyBird 1.5</span>
-        </div>
-    </div>
+<div class="iframe-container">
+    <iframe id="project-iframe" src="https://scratch.mit.edu/projects/1078282637/embed" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
+</div>
+
 </body>
 </html>

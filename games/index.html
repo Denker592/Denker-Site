@@ -1,141 +1,152 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Denker Site</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Denker Site</title>
 
-    <!-- Иконка сайта -->
-    <link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
+<!-- Иконка сайта -->
+<link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
 
-    <style>
-        body {
-            margin: 0;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
-        }
+<style>
+body {
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
 
-        .top-bar {
-            width: 100%;
-            height: 70px;
-            background-color: #007BFF;
-            display: flex;
-            align-items: center;
-            padding-left: 20px;
-            cursor: pointer;
-        }
+.top-bar {
+    width: 100%;
+    height: 70px;
+    background-color: #007BFF;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    cursor: pointer;
+}
 
-        .top-bar span {
-            color: white;
-            font-size: 28px;
-            font-weight: bold;
-        }
+.top-bar span {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
 
-        /* Текст под синей полоской */
-        .games-text {
-            text-align: center;
-            font-size: 48px;
-            font-weight: bold;
-            color: #000;
-            margin: 20px 0 10px 0;
-        }
+/* Текст под синей полоской */
+.games-text {
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #000;
+    margin: 20px 0 10px 0;
+}
 
-        /* Текст Scratch игры */
-        .scratch-text {
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            color: #333;
-            margin: 0 0 20px 0;
-        }
+/* Текст Scratch игры */
+.scratch-text {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 20px 0;
+}
 
-        /* Контейнер для игр */
-        .games-container {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: flex-start; /* ВЫРАВНИВАНИЕ ВЛЕВО */
-            margin: 20px;
-        }
+/* Контейнер для игр */
+.games-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* ВЫРАВНИВАНИЕ ВЛЕВО */
+    margin: 20px;
+}
 
-        .game-button {
-            display: inline-block;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.game-button {
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .game-button:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.3);
-        }
+.game-button:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+}
 
-        .game-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 250px;
-            padding: 10px;
-            background: #f8f8f8;
-            border-radius: 10px;
-            border: 2px solid #000;
-        }
+.game-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 250px; /* размер кнопки одинаковый */
+    padding: 10px;
+    background: #f8f8f8;
+    border-radius: 10px;
+    border: 2px solid #000;
+}
 
-        .game-box img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
+.game-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
 
-        .game-box span {
-            margin-top: 10px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #000;
-            text-align: center;
-        }
-    </style>
+.game-box span {
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+}
+</style>
 
-    <script>
-        function goHome() {
-            window.location.href = "https://denker592.github.io/Denker-Site/";
-        }
+<script>
+function goHome() {
+    window.location.href = "https://denker592.github.io/Denker-Site/";
+}
 
-        function openFlappyBird() {
-            window.location.href = "https://denker592.github.io/Denker-Site/games/FlappyBird-1.5/";
-        }
+function openFlappyBird() {
+    window.location.href = "https://denker592.github.io/Denker-Site/games/FlappyBird-1.5/";
+}
 
-        function openMinecraftClicker() {
-            window.location.href = "https://denker592.github.io/Denker-Site/games/Minecraft-Clicker/";
-        }
-    </script>
+function openMinecraftClicker() {
+    window.location.href = "https://denker592.github.io/Denker-Site/games/Minecraft-Clicker/";
+}
+
+function openFruitClicker() {
+    window.location.href = "https://denker592.github.io/Denker-Site/games/FruitClicker/";
+}
+</script>
 </head>
 <body>
-    <div class="top-bar" onclick="goHome()">
-        <span>DenkerSite</span>
-    </div>
+<div class="top-bar" onclick="goHome()">
+    <span>DenkerSite</span>
+</div>
 
-    <!-- Текст "Игры" под синей полоской -->
-    <div class="games-text">Игры</div>
-    <!-- Новый текст Scratch игры -->
-    <div class="scratch-text">Scratch игры</div>
+<!-- Текст "Игры" под синей полоской -->
+<div class="games-text">Игры</div>
+<div class="scratch-text">Scratch игры</div>
 
-    <div class="games-container">
-        <!-- Flappy Bird -->
-        <div class="game-button" onclick="openFlappyBird()">
-            <div class="game-box">
-                <img src="https://i.ibb.co/Zz9k4mQh/Flappy-Bird-1-5.png" alt="FlappyBird 1.5">
-                <span>FlappyBird 1.5</span>
-            </div>
-        </div>
-
-        <!-- Minecraft Clicker -->
-        <div class="game-button" onclick="openMinecraftClicker()">
-            <div class="game-box">
-                <img src="https://i.ibb.co/rKNLRVZ8/Minecraft-Clicker.png" alt="Minecraft Clicker">
-                <span>Minecraft Clicker</span>
-            </div>
+<div class="games-container">
+    <!-- Flappy Bird -->
+    <div class="game-button" onclick="openFlappyBird()">
+        <div class="game-box">
+            <img src="https://i.ibb.co/Zz9k4mQh/Flappy-Bird-1-5.png" alt="FlappyBird 1.5">
+            <span>FlappyBird 1.5</span>
         </div>
     </div>
+
+    <!-- Minecraft Clicker -->
+    <div class="game-button" onclick="openMinecraftClicker()">
+        <div class="game-box">
+            <img src="https://i.ibb.co/rKNLRVZ8/Minecraft-Clicker.png" alt="Minecraft Clicker">
+            <span>Minecraft Clicker</span>
+        </div>
+    </div>
+
+    <!-- Кликер фруктов -->
+    <div class="game-button" onclick="openFruitClicker()">
+        <div class="game-box">
+            <img src="https://i.ibb.co/r2zZ383Z/image.png" alt="Кликер фруктов">
+            <span>Кликер фруктов</span>
+        </div>
+    </div>
+</div>
 </body>
 </html>

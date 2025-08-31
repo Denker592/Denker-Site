@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://denker592.github.io/Denker-Site/sitemap.xml

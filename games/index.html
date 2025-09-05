@@ -21,7 +21,8 @@ body {
     background-color: #007BFF;
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    justify-content: space-between;
+    padding: 0 20px;
     cursor: pointer;
 }
 
@@ -29,6 +30,15 @@ body {
     color: white;
     font-size: 28px;
     font-weight: bold;
+}
+
+/* Селектор языка */
+.lang-select {
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
 }
 
 /* Заголовки */
@@ -101,7 +111,7 @@ body {
 @media (max-width: 600px) {
     .top-bar {
         height: 60px;
-        padding-left: 10px;
+        padding: 0 10px;
     }
     .top-bar span {
         font-size: 22px;
@@ -125,53 +135,89 @@ body {
 </style>
 
 <script>
+// Переходы
 function goHome() {
     window.location.href = "https://denker592.github.io/Denker-Site/";
 }
-
 function openFlappyBird() {
     window.location.href = "https://denker592.github.io/Denker-Site/games/FlappyBird-1.5/";
 }
-
 function openMinecraftClicker() {
     window.location.href = "https://denker592.github.io/Denker-Site/games/Minecraft-Clicker/";
 }
-
 function openFruitClicker() {
     window.location.href = "https://denker592.github.io/Denker-Site/games/FruitClicker/";
 }
-
 function openMemorize() {
     window.location.href = "https://denker592.github.io/Denker-Site/games/Python/Memorize/";
 }
+
+// Переводы
+const translations = {
+    "ru": {
+        games: "Игры",
+        scratch: "Scratch игры",
+        python: "Python игры",
+        roblox: "Roblox игры"
+    },
+    "uk": {
+        games: "Ігри",
+        scratch: "Ігри Scratch",
+        python: "Ігри Python",
+        roblox: "Ігри Roblox"
+    },
+    "en": {
+        games: "Games",
+        scratch: "Scratch Games",
+        python: "Python Games",
+        roblox: "Roblox Games"
+    }
+};
+
+// Установка языка
+function setLanguage(lang) {
+    localStorage.setItem("siteLang", lang);
+    document.querySelector('.games-text').innerText = translations[lang].games;
+    document.querySelector('.scratch-text').innerText = translations[lang].scratch;
+    document.querySelector('.python-text').innerText = translations[lang].python;
+    document.querySelector('.roblox-text').innerText = translations[lang].roblox;
+    document.getElementById("langSelect").value = lang;
+}
+
+// При загрузке
+window.onload = function() {
+    let savedLang = localStorage.getItem("siteLang") || "en";
+    setLanguage(savedLang);
+}
 </script>
+
 </head>
 <body>
-<div class="top-bar" onclick="goHome()">
-    <span>DenkerSite</span>
+<div class="top-bar">
+    <span onclick="goHome()">DenkerSite</span>
+    <select id="langSelect" class="lang-select" onchange="setLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+        <option value="uk">Українська</option>
+    </select>
 </div>
 
 <div class="games-text">Игры</div>
 <div class="scratch-text">Scratch игры</div>
 
 <div class="games-container">
-    <!-- Flappy Bird -->
     <div class="game-button" onclick="openFlappyBird()">
         <div class="game-box">
             <img src="https://i.ibb.co/Zz9k4mQh/Flappy-Bird-1-5.png" alt="FlappyBird 1.5">
             <span>FlappyBird 1.5</span>
         </div>
     </div>
-
-    <!-- Minecraft Clicker -->
     <div class="game-button" onclick="openMinecraftClicker()">
         <div class="game-box">
             <img src="https://i.ibb.co/rKNLRVZ8/Minecraft-Clicker.png" alt="Minecraft Clicker">
             <span>Minecraft Clicker</span>
         </div>
     </div>
-
-    <!-- Кликер фруктов -->
     <div class="game-button" onclick="openFruitClicker()">
         <div class="game-box">
             <img src="https://i.ibb.co/r2zZ383Z/image.png" alt="Кликер фруктов">
@@ -180,11 +226,9 @@ function openMemorize() {
     </div>
 </div>
 
-<!-- Новый раздел Python игр -->
 <div class="python-text">Python игры</div>
 
 <div class="games-container">
-    <!-- Memorize -->
     <div class="game-button" onclick="openMemorize()">
         <div class="game-box">
             <img src="https://i.ibb.co/KpNbgsFr/553-20250828102623.png" alt="Memorize">
@@ -193,43 +237,33 @@ function openMemorize() {
     </div>
 </div>
 
-<!-- Новый раздел Roblox игр -->
 <div class="roblox-text">Roblox игры</div>
 
 <div class="games-container">
-    <!-- Slap troling tower -->
     <a class="game-button" href="https://www.roblox.com/games/93561013267616/Troling-button-tower" target="_blank">
         <div class="game-box">
             <img src="https://i.ibb.co/0yz1cTMs/1.webp" alt="Slap troling tower">
             <span>Slap troling tower</span>
         </div>
     </a>
-
-    <!-- Easy Obby -->
     <a class="game-button" href="https://www.roblox.com/games/105627138937653/Easy-Obby" target="_blank">
         <div class="game-box">
             <img src="https://i.ibb.co/Rk8cyNbZ/2.webp" alt="Easy Obby">
             <span>Easy Obby</span>
         </div>
     </a>
-
-    <!-- Admin Simulator -->
     <a class="game-button" href="https://www.roblox.com/games/110499089512751/Admin-Simulator" target="_blank">
         <div class="game-box">
             <img src="https://i.ibb.co/dw7p5yYC/3.webp" alt="Admin Simulator">
             <span>Admin Simulator</span>
         </div>
     </a>
-
-    <!-- Faiting Zombie -->
     <a class="game-button" href="https://www.roblox.com/games/136935356016280/Faiting-Zombie" target="_blank">
         <div class="game-box">
             <img src="https://i.ibb.co/xqWpQG2S/4.png" alt="Faiting Zombie">
             <span>Faiting Zombie</span>
         </div>
     </a>
-
-    <!-- Paper School -->
     <a class="game-button" href="https://www.roblox.com/games/18379637571/Paper-School-Miss-Cricle-Rp" target="_blank">
         <div class="game-box">
             <img src="https://i.ibb.co/cSKt5RmX/5.png" alt="Paper School">
@@ -237,6 +271,5 @@ function openMemorize() {
         </div>
     </a>
 </div>
-
 </body>
 </html>

@@ -27,13 +27,13 @@ body {
     display: flex;
     align-items: center;
     padding-left: 20px;
-    cursor: pointer;
     justify-content: space-between;
 }
 .top-bar span {
     color: white;
     font-size: 28px;
     font-weight: bold;
+    cursor: pointer;
 }
 .lang-select {
     margin-right: 20px;
@@ -211,8 +211,8 @@ window.onload = function() {
 </head>
 
 <body>
-<div class="top-bar" onclick="goHome()">
-    <span>DenkerSite</span>
+<div class="top-bar">
+    <span onclick="goHome()">DenkerSite</span>
     <select id="langSelect" class="lang-select" onchange="setLanguage(this.value)">
         <option value="en">English</option>
         <option value="ru">Русский</option>

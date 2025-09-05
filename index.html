@@ -6,12 +6,12 @@
 
 <!-- SEO мета-теги -->
 <title>Denker Site</title>
-<meta name="description" content="Сайт Denker'а!! Тут ты сможешь играть скачать музыку для видео И ДАЖЕ ШРИФТЫ!!!!">
-<meta name="keywords" content="DenkerSite -- Главная страница">
+<meta name="description" content="Denker's Site! Play, download music for videos and even fonts!">
+<meta name="keywords" content="Denker Site, Denker592, игры, музыка, шрифты">
 <meta name="author" content="Denker">
 <meta name="robots" content="index, follow">
 
-<!-- Иконка -->
+<!-- Иконка сайта -->
 <link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
 
 <style>
@@ -28,11 +28,20 @@ body {
     align-items: center;
     padding-left: 20px;
     cursor: pointer;
+    justify-content: space-between;
 }
 .top-bar span {
     color: white;
     font-size: 28px;
     font-weight: bold;
+}
+.lang-select {
+    margin-right: 20px;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
 }
 .black-bar {
     width: 100%;
@@ -72,6 +81,7 @@ body {
 .right-bar {
     background-color: #f8f8f8;
     width: 100%;
+    height: auto;
     border-radius: 15px;
     box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
     display: flex;
@@ -125,24 +135,6 @@ body {
     color: #000;
     margin-left: 15px;
 }
-.lang-buttons {
-    text-align: center;
-    margin: 15px 0;
-}
-.lang-buttons button {
-    margin: 0 5px;
-    padding: 5px 12px;
-    border-radius: 10px;
-    border: none;
-    background: #007BFF;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-.lang-buttons button:hover {
-    background: #0056b3;
-}
 @media (max-width: 600px) {
     .top-bar {
         height: 60px;
@@ -182,7 +174,7 @@ function goGames() {
     window.location.href = "https://denker592.github.io/Denker-Site/games/";
 }
 
-// Тексты на языках
+// Переводы
 const translations = {
     "ru": {
         welcome: "Привет! Это все ссылки Denker'a",
@@ -201,22 +193,18 @@ const translations = {
     }
 };
 
-// Устанавливаем язык
+// Установка языка
 function setLanguage(lang) {
     localStorage.setItem("siteLang", lang);
     document.getElementById("welcome").innerText = translations[lang].welcome;
     document.getElementById("subscribe").innerText = translations[lang].subscribe;
     document.getElementById("gamesText").innerText = translations[lang].games;
+    document.getElementById("langSelect").value = lang;
 }
 
-// Автоматический выбор языка
+// При загрузке — всегда английский если нет сохранённого выбора
 window.onload = function() {
-    let savedLang = localStorage.getItem("siteLang");
-    if (!savedLang) {
-        let userLang = navigator.language || navigator.userLanguage;
-        userLang = userLang.substring(0,2);
-        savedLang = translations[userLang] ? userLang : "en";
-    }
+    let savedLang = localStorage.getItem("siteLang") || "en";
     setLanguage(savedLang);
 }
 </script>
@@ -225,16 +213,14 @@ window.onload = function() {
 <body>
 <div class="top-bar" onclick="goHome()">
     <span>DenkerSite</span>
+    <select id="langSelect" class="lang-select" onchange="setLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+        <option value="uk">Українська</option>
+    </select>
 </div>
 
-<!-- Кнопки выбора языка -->
-<div class="lang-buttons">
-    <button onclick="setLanguage('ru')">RU</button>
-    <button onclick="setLanguage('uk')">UK</button>
-    <button onclick="setLanguage('en')">EN</button>
-</div>
-
-<div class="text-top" id="welcome"></div>
+<div class="text-top" id="welcome">Hello! These are all Denker's links</div>
 
 <div class="content">
     <img class="photo" src="https://i.ibb.co/Pz0tsQbF/554-20250829114518.png" alt="Фото">
@@ -264,11 +250,13 @@ window.onload = function() {
 
 <div class="black-bar"></div>
 
-<div class="bottom-text" id="subscribe"></div>
+<div class="bottom-text" id="subscribe">
+    Subscribe to all channels! Links are just above!
+</div>
 
 <div class="square" onclick="goGames()">
     <img src="https://i.ibb.co/cSXdw4pp/559-20250829135801.png" alt="Иконка">
-    <div class="square-text" id="gamesText"></div>
+    <div class="square-text" id="gamesText">Games</div>
 </div>
 
 </body>

@@ -1,58 +1,18 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- 🔹 Основные SEO-теги -->
-<title>Denker Site — Главная страница</title>
-<meta name="description" content="Добро пожаловать на Denker Site! Здесь можно играть, скачать музыку для видео и даже шрифты.">
-<meta name="keywords" content="Denker, Denker Site, сайт Denker, игры, музыка, скачать, шрифты">
+<!-- SEO мета-теги -->
+<title>Denker Site</title>
+<meta name="description" content="Сайт Denker'а!! Тут ты сможешь играть скачать музыку для видео И ДАЖЕ ШРИФТЫ!!!!">
+<meta name="keywords" content="DenkerSite -- Главная страница">
 <meta name="author" content="Denker">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://denker592.github.io/Denker-Site/">
 
-<!-- 🔹 Иконка сайта -->
+<!-- Иконка -->
 <link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
-
-<!-- 🔹 Open Graph (для соцсетей и Google) -->
-<meta property="og:title" content="Denker Site">
-<meta property="og:description" content="Официальный сайт Denker'а! Тут игры, музыка, шрифты и многое другое.">
-<meta property="og:image" content="https://i.ibb.co/Pz0tsQbF/554-20250829114518.png">
-<meta property="og:url" content="https://denker592.github.io/Denker-Site/">
-<meta property="og:type" content="website">
-
-<!-- 🔹 Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Denker Site">
-<meta name="twitter:description" content="Игры, музыка, шрифты и всё для творчества — заходи на Denker Site!">
-<meta name="twitter:image" content="https://i.ibb.co/Pz0tsQbF/554-20250829114518.png">
-
-<!-- 🔹 Sitemap -->
-<link rel="sitemap" type="application/xml" href="sitemap.xml">
-
-<!-- 🔹 Структурированные данные (Google Schema.org) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Denker Site",
-  "url": "https://denker592.github.io/Denker-Site/",
-  "author": {
-    "@type": "Person",
-    "name": "Denker"
-  },
-  "description": "Denker Site — сайт с играми, музыкой, шрифтами и приколами.",
-  "sameAs": [
-    "https://www.youtube.com/@Denker_592",
-    "https://www.tiktok.com/@denker42",
-    "https://t.me/oiuytrArt",
-    "https://scratch.mit.edu/users/Denker52/",
-    "https://sketchfab.com/Denker592",
-    "https://www.roblox.com/users/8453743220/profile"
-  ]
-}
-</script>
 
 <style>
 body {
@@ -112,7 +72,6 @@ body {
 .right-bar {
     background-color: #f8f8f8;
     width: 100%;
-    height: auto;
     border-radius: 15px;
     box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
     display: flex;
@@ -166,6 +125,24 @@ body {
     color: #000;
     margin-left: 15px;
 }
+.lang-buttons {
+    text-align: center;
+    margin: 15px 0;
+}
+.lang-buttons button {
+    margin: 0 5px;
+    padding: 5px 12px;
+    border-radius: 10px;
+    border: none;
+    background: #007BFF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.lang-buttons button:hover {
+    background: #0056b3;
+}
 @media (max-width: 600px) {
     .top-bar {
         height: 60px;
@@ -204,6 +181,44 @@ function goHome() {
 function goGames() {
     window.location.href = "https://denker592.github.io/Denker-Site/games/";
 }
+
+// Тексты на языках
+const translations = {
+    "ru": {
+        welcome: "Привет! Это все ссылки Denker'a",
+        subscribe: "Подписывайтесь на все каналы! Ссылочки есть немного выше!",
+        games: "Игры"
+    },
+    "uk": {
+        welcome: "Привіт! Це всі посилання Denker'a",
+        subscribe: "Підписуйтесь на всі канали! Посилання трохи вище!",
+        games: "Ігри"
+    },
+    "en": {
+        welcome: "Hello! These are all Denker's links",
+        subscribe: "Subscribe to all channels! Links are just above!",
+        games: "Games"
+    }
+};
+
+// Устанавливаем язык
+function setLanguage(lang) {
+    localStorage.setItem("siteLang", lang);
+    document.getElementById("welcome").innerText = translations[lang].welcome;
+    document.getElementById("subscribe").innerText = translations[lang].subscribe;
+    document.getElementById("gamesText").innerText = translations[lang].games;
+}
+
+// Автоматический выбор языка
+window.onload = function() {
+    let savedLang = localStorage.getItem("siteLang");
+    if (!savedLang) {
+        let userLang = navigator.language || navigator.userLanguage;
+        userLang = userLang.substring(0,2);
+        savedLang = translations[userLang] ? userLang : "en";
+    }
+    setLanguage(savedLang);
+}
 </script>
 </head>
 
@@ -212,7 +227,14 @@ function goGames() {
     <span>DenkerSite</span>
 </div>
 
-<div class="text-top">Привет! Это все ссылки Denker'a</div>
+<!-- Кнопки выбора языка -->
+<div class="lang-buttons">
+    <button onclick="setLanguage('ru')">RU</button>
+    <button onclick="setLanguage('uk')">UK</button>
+    <button onclick="setLanguage('en')">EN</button>
+</div>
+
+<div class="text-top" id="welcome"></div>
 
 <div class="content">
     <img class="photo" src="https://i.ibb.co/Pz0tsQbF/554-20250829114518.png" alt="Фото">
@@ -221,7 +243,7 @@ function goGames() {
             <a href="https://www.youtube.com/@Denker_592" target="_blank">
                 <img src="https://i.ibb.co/nsPBh0NC/YouTube.png" alt="YouTube">
             </a>
-            <a href="https://www.tiktok.com/@denker42" target="_blank">
+            <a href="https://www.tiktok.com@denker42?_t=8gh8AUiFWQo" target="_blank">
                 <img src="https://i.ibb.co/39S0nZfs/TikTok.png" alt="TikTok">
             </a>
             <a href="https://t.me/oiuytrArt" target="_blank">
@@ -242,13 +264,11 @@ function goGames() {
 
 <div class="black-bar"></div>
 
-<div class="bottom-text">
-    Подписывайтесь на все каналы! Ссылочки есть немного выше!
-</div>
+<div class="bottom-text" id="subscribe"></div>
 
 <div class="square" onclick="goGames()">
     <img src="https://i.ibb.co/cSXdw4pp/559-20250829135801.png" alt="Иконка">
-    <div class="square-text">Игры</div>
+    <div class="square-text" id="gamesText"></div>
 </div>
 
 </body>

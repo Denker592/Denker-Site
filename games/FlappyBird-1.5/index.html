@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Denker Site</title>
 
-<!-- Иконка сайта -->
 <link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
 
 <style>
@@ -22,15 +21,17 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 10px;
     box-sizing: border-box;
+    flex-wrap: wrap;
 }
 
 .top-bar span {
     color: white;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     cursor: pointer;
+    margin: 5px 0;
 }
 
 .lang-select {
@@ -39,33 +40,41 @@ body {
     border-radius: 8px;
     border: none;
     cursor: pointer;
+    margin: 5px 0;
 }
 
 .bottom-text {
     display: flex;
-    justify-content: center;
-    gap: 15px;
+    flex-direction: column;
     align-items: center;
+    gap: 10px;
     margin: 10px 0;
-    flex-wrap: wrap;
 }
 
-.bottom-text img {
+.bottom-text-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.bottom-text-row img {
     width: 50px;
     height: auto;
     border: 2px solid black;
     border-radius: 5px;
 }
 
-.bottom-text span {
-    font-size: 18px;
+.bottom-text-row span {
+    font-size: 16px;
     font-weight: bold;
 }
 
 .iframe-container {
     display: flex;
     justify-content: center;
-    margin: 20px;
+    margin: 10px;
     width: 100%;
 }
 
@@ -79,23 +88,22 @@ body {
 /* Адаптив для мобильных */
 @media (max-width: 600px) {
     .top-bar {
-        height: 60px;
-        padding: 0 10px;
+        height: auto;
+        padding: 0 5px;
     }
     .top-bar span {
-        font-size: 20px;
+        font-size: 18px;
     }
     .lang-select {
         font-size: 14px;
         padding: 4px;
     }
-    .bottom-text {
-        gap: 10px;
-        font-size: 16px;
-    }
     #project-iframe {
         width: 100%;
-        height: calc(100vw * 0.6667); /* сохраняем пропорции 900x600 */
+        height: calc(100vw * 0.6667);
+    }
+    .bottom-text-row span {
+        font-size: 14px;
     }
 }
 </style>
@@ -121,7 +129,7 @@ function reloadIframe() {
     iframeElement.src = iframeElement.src;
 }
 
-// Переводы для текста
+// Переводы
 const translations = {
     "ru": {
         start: "Нажмите на",
@@ -160,7 +168,7 @@ window.onload = function() {
     document.addEventListener("mozfullscreenchange", reloadIframe);
     document.addEventListener("MSFullscreenChange", reloadIframe);
 
-    // Установка языка при загрузке
+    // Установка языка
     let savedLang = localStorage.getItem("siteLang") || "en";
     setLanguage(savedLang);
 };
@@ -179,12 +187,16 @@ window.onload = function() {
 </div>
 
 <div class="bottom-text">
-    <span id="startText">Нажмите на</span>
-    <img src="https://i.ibb.co/GvrLj0J8/560-20250829215010.png" alt="start">
-    <span id="toStartText">чтобы начать проект</span>
-    <span id="startText2">Нажмите на</span>
-    <img src="https://i.ibb.co/CKYTSgz4/560-20250829215132.png" alt="stop">
-    <span id="stopText">чтобы завершить проект</span>
+    <div class="bottom-text-row">
+        <span id="startText">Нажмите на</span>
+        <img src="https://i.ibb.co/GvrLj0J8/560-20250829215010.png" alt="start">
+        <span id="toStartText">чтобы начать проект</span>
+    </div>
+    <div class="bottom-text-row">
+        <span id="startText2">Нажмите на</span>
+        <img src="https://i.ibb.co/CKYTSgz4/560-20250829215132.png" alt="stop">
+        <span id="stopText">чтобы завершить проект</span>
+    </div>
 </div>
 
 <div class="iframe-container">

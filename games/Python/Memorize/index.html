@@ -32,6 +32,14 @@ body {
     font-weight: bold;
 }
 
+/* Переводчик Google */
+#google_translate_element {
+    position: absolute;
+    top: 20px;
+    right: 200px;
+    z-index: 1000;
+}
+
 /* Основной контейнер под полоской */
 .main-container {
     display: flex;
@@ -186,6 +194,7 @@ body {
 /* Медиазапросы для телефонов */
 @media (max-width: 768px) {
     .top-bar span { font-size: 22px; }
+    #google_translate_element { right: 150px; top: 15px; }
     .install-button {
         font-size: 18px;
         padding: 10px 20px;
@@ -219,6 +228,15 @@ function goHome() {
     <span>DenkerSite</span>
 </div>
 
+<!-- Переводчик -->
+<div id="google_translate_element"></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'ru'}, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 <!-- Кнопка Установить -->
 <button id="installBtn" class="install-button">Установить</button>
 
@@ -227,7 +245,7 @@ function goHome() {
         <img src="https://i.ibb.co/KpNbgsFr/553-20250828102623.png" alt="Memorize">
         <span class="game-name">Memorize</span>
         <p class="description">
-            Описание: Ваша задача это запомнить во время отчета все кубы. После того как отчет закончится, ваша задача — нажать на все те кубы, которые были во время отчета зелеными. 
+            Описание: Ваша задача это запомнить во время обратного таймера все кубы. После того как обратный таймер закончится, ваша задача — нажать на все те кубы, которые были во время обратного таймера зелеными. 
             Если вы ошибетесь и нажмете на куб с рисунком бомбы, то вам придется переиграть уровень. Карта увеличивается с каждым выигрышем. Чтобы начать игру заново, нажмите на клавишу "R".
         </p>
     </div>

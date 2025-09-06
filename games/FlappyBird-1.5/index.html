@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Denker Site</title>
 
+<!-- Иконка сайта -->
 <link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
 
 <style>
@@ -16,56 +17,40 @@ body {
 
 .top-bar {
     width: 100%;
+    height: 70px;
     background-color: #007BFF;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 10px;
-    flex-wrap: wrap;
+    padding: 0 20px;
     box-sizing: border-box;
 }
 
 .top-bar span {
     color: white;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-    margin: 2px 0;
-}
-
-.lang-select {
-    font-size: 14px;
-    padding: 4px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    margin: 2px 0;
 }
 
 .bottom-text {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin: 10px 0;
-}
-
-.bottom-text-row {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    flex-wrap: wrap;
     justify-content: center;
+    gap: 20px;
+    align-items: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
-.bottom-text-row img {
+.bottom-text img {
     width: 40px;
     height: auto;
     border: 2px solid black;
     border-radius: 5px;
 }
 
-.bottom-text-row span {
+.bottom-text span {
     font-size: 16px;
     font-weight: bold;
 }
@@ -73,8 +58,7 @@ body {
 .iframe-container {
     display: flex;
     justify-content: center;
-    margin: 10px;
-    width: 100%;
+    margin: 20px;
 }
 
 #project-iframe {
@@ -86,19 +70,26 @@ body {
     border-radius: 15px;
 }
 
-/* 📱 Адаптация для планшетов и телефонов */
+/* 📱 Адаптация под телефоны */
 @media (max-width: 768px) {
+    .top-bar {
+        height: 60px;
+    }
+
     .top-bar span {
-        font-size: 20px;
+        font-size: 22px;
     }
-    .bottom-text-row img {
-        width: 30px;
-    }
-    .bottom-text-row span {
+
+    .bottom-text {
+        gap: 10px;
         font-size: 14px;
     }
+
+    .bottom-text img {
+        width: 35px;
+    }
+
     #project-iframe {
-        width: 100%;
         height: 50vh;
         min-height: 300px;
     }
@@ -108,9 +99,15 @@ body {
     .top-bar span {
         font-size: 18px;
     }
-    .bottom-text-row span {
-        font-size: 12px;
+
+    .bottom-text span {
+        font-size: 14px;
     }
+
+    .bottom-text img {
+        width: 30px;
+    }
+
     #project-iframe {
         height: 45vh;
         min-height: 250px;
@@ -120,37 +117,6 @@ body {
 
 <script>
 let iframeElement;
-
-// Переводы
-const translations = {
-    "ru": {
-        startText: "Нажмите на",
-        toStartText: "чтобы начать проект",
-        stopText: "чтобы завершить проект",
-        fullscreen: "На весь экран"
-    },
-    "uk": {
-        startText: "Натисніть на",
-        toStartText: "щоб розпочати проєкт",
-        stopText: "щоб завершити проєкт",
-        fullscreen: "На весь екран"
-    },
-    "en": {
-        startText: "Click on",
-        toStartText: "to start the project",
-        stopText: "to stop the project",
-        fullscreen: "Fullscreen"
-    }
-};
-
-function setLanguage(lang) {
-    localStorage.setItem("siteLang", lang);
-    document.getElementById("startText").innerText = translations[lang].startText;
-    document.getElementById("toStartText").innerText = translations[lang].toStartText;
-    document.getElementById("stopText").innerText = translations[lang].stopText;
-    document.getElementById("fullscreenBtn").innerText = translations[lang].fullscreen;
-    document.getElementById("langSelect").value = lang;
-}
 
 function goHome() {
     window.location.href = "https://denker592.github.io/Denker-Site/";
@@ -166,6 +132,7 @@ function openFullscreen() {
     }
 }
 
+// Перезапуск iframe при входе/выходе из fullscreen
 function reloadIframe() {
     iframeElement.src = iframeElement.src;
 }
@@ -177,9 +144,6 @@ window.onload = function() {
     document.addEventListener("webkitfullscreenchange", reloadIframe);
     document.addEventListener("mozfullscreenchange", reloadIframe);
     document.addEventListener("MSFullscreenChange", reloadIframe);
-
-    let savedLang = localStorage.getItem("siteLang") || "en";
-    setLanguage(savedLang);
 };
 </script>
 </head>
@@ -187,29 +151,20 @@ window.onload = function() {
 <body>
 <div class="top-bar">
     <span onclick="goHome()">DenkerSite</span>
-    <span id="fullscreenBtn" onclick="openFullscreen()">На весь экран</span>
-    <select id="langSelect" class="lang-select" onchange="setLanguage(this.value)">
-        <option value="en">English</option>
-        <option value="ru">Русский</option>
-        <option value="uk">Українська</option>
-    </select>
+    <span onclick="openFullscreen()">На весь экран</span>
 </div>
 
 <div class="bottom-text">
-    <div class="bottom-text-row">
-        <span id="startText">Нажмите на</span>
-        <img src="https://i.ibb.co/GvrLj0J8/560-20250829215010.png" alt="start">
-        <span id="toStartText">чтобы начать проект</span>
-    </div>
-    <div class="bottom-text-row">
-        <span id="startText2">Нажмите на</span>
-        <img src="https://i.ibb.co/CKYTSgz4/560-20250829215132.png" alt="stop">
-        <span id="stopText">чтобы завершить проект</span>
-    </div>
+    <span>Нажмите на</span>
+    <img src="https://i.ibb.co/GvrLj0J8/560-20250829215010.png" alt="start">
+    <span>чтобы начать проект</span>
+    <span>Нажмите на</span>
+    <img src="https://i.ibb.co/CKYTSgz4/560-20250829215132.png" alt="stop">
+    <span>чтобы завершить проект</span>
 </div>
 
 <div class="iframe-container">
-    <iframe id="project-iframe" src="https://scratch.mit.edu/projects/1193633835/embed" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
+    <iframe id="project-iframe" src="https://scratch.mit.edu/projects/1078282637/embed" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
 </div>
 
 </body>

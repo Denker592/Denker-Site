@@ -11,8 +11,8 @@
 <style>
 body {
     margin: 0;
-    background-color: #f0f0f0;
     font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
 }
 
 .top-bar {
@@ -23,13 +23,14 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    cursor: pointer;
+    box-sizing: border-box;
 }
 
 .top-bar span {
     color: white;
     font-size: 28px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 /* Селектор языка */
@@ -41,97 +42,194 @@ body {
     cursor: pointer;
 }
 
-/* Заголовки */
-.games-text {
+.bottom-text {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
     text-align: center;
-    font-size: 48px;
-    font-weight: bold;
-    color: #000;
-    margin: 20px 0 10px 0;
 }
 
-.scratch-text {
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    color: #333;
-    margin: 20px 0;
+.bottom-text img {
+    width: 40px;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 5px;
 }
 
-/* Контейнер с игрой */
-.game-container {
+.bottom-text span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.iframe-container {
     display: flex;
     justify-content: center;
     margin: 20px;
 }
 
-/* Адаптив для мобильных */
-@media (max-width: 600px) {
+#project-iframe {
+    width: 90%;
+    max-width: 900px;
+    height: 60vh;
+    min-height: 400px;
+    border: 3px solid black;
+    border-radius: 15px;
+}
+
+/* 📱 Адаптация под телефоны */
+@media (max-width: 768px) {
     .top-bar {
         height: 60px;
-        padding: 0 10px;
     }
+
     .top-bar span {
         font-size: 22px;
     }
-    .games-text {
-        font-size: 32px;
+
+    .bottom-text {
+        gap: 10px;
+        font-size: 14px;
     }
-    .scratch-text {
-        font-size: 20px;
+
+    .bottom-text img {
+        width: 35px;
+    }
+
+    #project-iframe {
+        height: 50vh;
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-bar span {
+        font-size: 18px;
+    }
+
+    .bottom-text span {
+        font-size: 14px;
+    }
+
+    .bottom-text img {
+        width: 30px;
+    }
+
+    #project-iframe {
+        height: 45vh;
+        min-height: 250px;
     }
 }
 </style>
 
 <script>
+let iframeElement;
+
+function goHome() {
+    window.location.href = "https://denker592.github.io/Denker-Site/";
+}
+
+function openFullscreen() {
+    if (iframeElement.requestFullscreen) {
+        iframeElement.requestFullscreen();
+    } else if (iframeElement.webkitRequestFullscreen) {
+        iframeElement.webkitRequestFullscreen();
+    } else if (iframeElement.msRequestFullscreen) {
+        iframeElement.msRequestFullscreen();
+    }
+}
+
+// Перезапуск iframe при входе/выходе из fullscreen
+function reloadIframe() {
+    iframeElement.src = iframeElement.src;
+}
+
 // Переводы
 const translations = {
     "ru": {
-        games: "Игры",
-        scratch: "Scratch игры"
+        site: "DenkerSite",
+        fullscreen: "На весь экран",
+        pressStart1: "Нажмите на",
+        pressStart2: "чтобы начать проект",
+        pressStop1: "Нажмите на",
+        pressStop2: "чтобы завершить проект"
     },
     "uk": {
-        games: "Ігри",
-        scratch: "Ігри Scratch"
+        site: "DenkerSite",
+        fullscreen: "На весь екран",
+        pressStart1: "Натисніть на",
+        pressStart2: "щоб почати проєкт",
+        pressStop1: "Натисніть на",
+        pressStop2: "щоб завершити проєкт"
     },
     "en": {
-        games: "Games",
-        scratch: "Scratch Games"
+        site: "DenkerSite",
+        fullscreen: "Fullscreen",
+        pressStart1: "Click on",
+        pressStart2: "to start the project",
+        pressStop1: "Click on",
+        pressStop2: "to stop the project"
     }
 };
 
 // Установка языка
 function setLanguage(lang) {
     localStorage.setItem("siteLang", lang);
-    document.querySelector('.games-text').innerText = translations[lang].games;
-    document.querySelector('.scratch-text').innerText = translations[lang].scratch;
+    document.getElementById("homeText").innerText = translations[lang].site;
+    document.getElementById("fullscreenText").innerText = translations[lang].fullscreen;
+
+    document.getElementById("pressStart1").innerText = translations[lang].pressStart1;
+    document.getElementById("pressStart2").innerText = translations[lang].pressStart2;
+    document.getElementById("pressStop1").innerText = translations[lang].pressStop1;
+    document.getElementById("pressStop2").innerText = translations[lang].pressStop2;
+
     document.getElementById("langSelect").value = lang;
 }
 
-// При загрузке
 window.onload = function() {
+    iframeElement = document.getElementById("project-iframe");
+
+    document.addEventListener("fullscreenchange", reloadIframe);
+    document.addEventListener("webkitfullscreenchange", reloadIframe);
+    document.addEventListener("mozfullscreenchange", reloadIframe);
+    document.addEventListener("MSFullscreenChange", reloadIframe);
+
     let savedLang = localStorage.getItem("siteLang") || "en";
     setLanguage(savedLang);
 }
 </script>
-
 </head>
+
 <body>
 <div class="top-bar">
-    <span onclick="window.location.href='https://denker592.github.io/Denker-Site/'">DenkerSite</span>
-    <select id="langSelect" class="lang-select" onchange="setLanguage(this.value)">
-        <option value="en">English</option>
-        <option value="ru">Русский</option>
-        <option value="uk">Українська</option>
-    </select>
+    <span id="homeText" onclick="goHome()">DenkerSite</span>
+    <div>
+        <span id="fullscreenText" onclick="openFullscreen()">На весь экран</span>
+        <select id="langSelect" class="lang-select" onchange="setLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+            <option value="uk">Українська</option>
+        </select>
+    </div>
 </div>
 
-<div class="games-text">Игры</div>
-<div class="scratch-text">Scratch игры</div>
-
-<div class="game-container">
-    <iframe src="https://scratch.mit.edu/projects/1193633835/embed" allowtransparency="true" 
-            width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<div class="bottom-text">
+    <span id="pressStart1">Нажмите на</span>
+    <img src="https://i.ibb.co/GvrLj0J8/560-20250829215010.png" alt="start">
+    <span id="pressStart2">чтобы начать проект</span>
+    <span id="pressStop1">Нажмите на</span>
+    <img src="https://i.ibb.co/CKYTSgz4/560-20250829215132.png" alt="stop">
+    <span id="pressStop2">чтобы завершить проект</span>
+</div>
+<div class="iframe-container">
+    <iframe id="project-iframe" 
+            src="https://scratch.mit.edu/projects/1193633835/embed" 
+            allowtransparency="true" 
+            frameborder="0" 
+            scrolling="no" 
+            allowfullscreen></iframe>
 </div>
 
 </body>

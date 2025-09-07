@@ -99,9 +99,9 @@ function downloadAudio() {
 
 // Переводы
 const translations = {
-    "ru": { site: "DenkerSite", title: "Музыка", subtitle: "Музыка для видео" },
-    "uk": { site: "DenkerSite", title: "Музика", subtitle: "Музика для відео" },
-    "en": { site: "DenkerSite", title: "Music", subtitle: "Music for videos" }
+    "ru": { site: "DenkerSite", title: "Музыка", subtitle: "Музыка для видео", download: "Скачать" },
+    "uk": { site: "DenkerSite", title: "Музика", subtitle: "Музика для відео", download: "Завантажити" },
+    "en": { site: "DenkerSite", title: "Music", subtitle: "Music for videos", download: "Download" }
 };
 
 function setLanguage(lang) {
@@ -109,6 +109,7 @@ function setLanguage(lang) {
     document.getElementById("siteName").innerText = translations[lang].site;
     document.getElementById("pageTitle").innerText = translations[lang].title;
     document.getElementById("pageSubtitle").innerText = translations[lang].subtitle;
+    document.getElementById("downloadBtn").innerText = translations[lang].download;
     document.getElementById("langSelect").value = lang;
 }
 
@@ -137,7 +138,7 @@ window.onload = function() {
     <source src="https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?rlkey=2zivvcziwzoepmepbtx6abl0c&dl=1" type="audio/mpeg">
     Ваш браузер не поддерживает аудио.
   </audio>
-  <button class="download-button" onclick="downloadAudio()">Скачать</button>
+  <button id="downloadBtn" class="download-button" onclick="downloadAudio()">Скачать</button>
 </div>
 
 </body>

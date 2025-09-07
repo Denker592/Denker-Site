@@ -41,15 +41,25 @@ body {
 }
 .page-title {
     text-align: center;
-    font-size: 40px; /* намного больше */
+    font-size: 40px;
     color: #000;
-    margin: 25px auto;
+    margin: 25px auto 5px auto;
     font-weight: bold;
+}
+.page-subtitle {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
 }
 .music-player {
     display: flex;
     justify-content: center;
     margin: 20px;
+}
+.music-player audio {
+    width: 80%; /* шире на ПК */
+    max-width: 1000px;
 }
 @media (max-width: 600px) {
     .top-bar {
@@ -60,11 +70,14 @@ body {
         font-size: 22px;
     }
     .page-title {
-        font-size: 30px; /* на телефоне тоже большой, но чуть меньше */
-        margin: 15px auto;
+        font-size: 30px;
+        margin: 15px auto 5px auto;
     }
-    audio {
-        width: 90%;
+    .page-subtitle {
+        font-size: 14px;
+    }
+    .music-player audio {
+        width: 95%; /* шире на телефоне */
     }
 }
 </style>
@@ -76,9 +89,9 @@ function goHome() {
 
 // Переводы
 const translations = {
-    "ru": { site: "DenkerSite", title: "Музыка" },
-    "uk": { site: "DenkerSite", title: "Музика" },
-    "en": { site: "DenkerSite", title: "Music" }
+    "ru": { site: "DenkerSite", title: "Музыка", subtitle: "Музыка для видео" },
+    "uk": { site: "DenkerSite", title: "Музика", subtitle: "Музика для відео" },
+    "en": { site: "DenkerSite", title: "Music", subtitle: "Music for videos" }
 };
 
 // Установка языка
@@ -86,6 +99,7 @@ function setLanguage(lang) {
     localStorage.setItem("siteLang", lang);
     document.getElementById("siteName").innerText = translations[lang].site;
     document.getElementById("pageTitle").innerText = translations[lang].title;
+    document.getElementById("pageSubtitle").innerText = translations[lang].subtitle;
     document.getElementById("langSelect").value = lang;
 }
 
@@ -109,6 +123,7 @@ window.onload = function() {
 
 <!-- Заголовок -->
 <div class="page-title" id="pageTitle">Music</div>
+<div class="page-subtitle" id="pageSubtitle">Music for videos</div>
 
 <!-- Первый трек -->
 <div class="music-player">

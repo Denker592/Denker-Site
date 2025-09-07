@@ -4,10 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Заголовок страницы -->
 <title>DenkerSite</title>
 
-<!-- Иконка сайта -->
 <link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
 
 <style>
@@ -55,11 +53,26 @@ body {
 .music-player {
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 15px;
     margin: 20px;
 }
 .music-player audio {
-    width: 80%; /* шире на ПК */
-    max-width: 1000px;
+    width: 60%; /* меньше по ширине */
+    max-width: 800px;
+}
+.download-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.download-btn:hover {
+    background-color: #0056b3;
 }
 @media (max-width: 600px) {
     .top-bar {
@@ -77,7 +90,7 @@ body {
         font-size: 14px;
     }
     .music-player audio {
-        width: 95%; /* шире на телефоне */
+        width: 90%; /* ширина на телефонах */
     }
 }
 </style>
@@ -94,7 +107,6 @@ const translations = {
     "en": { site: "DenkerSite", title: "Music", subtitle: "Music for videos" }
 };
 
-// Установка языка
 function setLanguage(lang) {
     localStorage.setItem("siteLang", lang);
     document.getElementById("siteName").innerText = translations[lang].site;
@@ -103,7 +115,6 @@ function setLanguage(lang) {
     document.getElementById("langSelect").value = lang;
 }
 
-// При загрузке
 window.onload = function() {
     let savedLang = localStorage.getItem("siteLang") || "en";
     setLanguage(savedLang);
@@ -121,16 +132,18 @@ window.onload = function() {
     </select>
 </div>
 
-<!-- Заголовок -->
 <div class="page-title" id="pageTitle">Music</div>
 <div class="page-subtitle" id="pageSubtitle">Music for videos</div>
 
-<!-- Первый трек -->
+<!-- Первый трек с кнопкой скачать -->
 <div class="music-player">
   <audio controls>
     <source src="https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?rlkey=2zivvcziwzoepmepbtx6abl0c&st=cxa4zos4&dl=1" type="audio/mpeg">
     Ваш браузер не поддерживает аудио.
   </audio>
+  <a href="https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?rlkey=2zivvcziwzoepmepbtx6abl0c&st=cxa4zos4&dl=1" download>
+    <button class="download-btn">Скачать</button>
+  </a>
 </div>
 
 </body>

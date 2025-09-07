@@ -4,10 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Название сайта -->
 <title>Denker Site</title>
 
-<!-- Иконка сайта -->
 <link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
 
 <style>
@@ -15,6 +13,9 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 .top-bar {
     width: 100%;
@@ -38,6 +39,16 @@ body {
     border: none;
     cursor: pointer;
 }
+.center-text {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 64px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+}
 @media (max-width: 600px) {
     .top-bar {
         height: 60px;
@@ -46,29 +57,36 @@ body {
     .top-bar span {
         font-size: 22px;
     }
+    .center-text {
+        font-size: 40px;
+        padding: 0 10px;
+    }
 }
 </style>
 
 <script>
-// Переводы для названия (если нужно будет изменить текст позже)
+// Переводы текста в центре
 const translations = {
-    "ru": { siteName: "DenkerSite" },
-    "uk": { siteName: "DenkerSite" },
-    "en": { siteName: "DenkerSite" }
+    "ru": { centerText: "Шрифты" },
+    "uk": { centerText: "Шрифти" },
+    "en": { centerText: "Fonts" }
 };
 
+// Установка языка
 function setLanguage(lang) {
     localStorage.setItem("siteLang", lang);
-    document.getElementById("siteName").innerText = translations[lang].siteName;
+    document.getElementById("siteName").innerText = "DenkerSite";
+    document.getElementById("centerText").innerText = translations[lang].centerText;
     document.getElementById("langSelect").value = lang;
 }
 
-// При загрузке — английский по умолчанию
+// При загрузке
 window.onload = function() {
     let savedLang = localStorage.getItem("siteLang") || "en";
     setLanguage(savedLang);
 }
 
+// Переход на главную при клике на название сайта
 function goHome() {
     window.location.href = "https://denker592.github.io/Denker-Site/";
 }
@@ -84,5 +102,8 @@ function goHome() {
         <option value="uk">Українська</option>
     </select>
 </div>
+
+<div class="center-text" id="centerText">Fonts</div>
+
 </body>
 </html>

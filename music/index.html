@@ -38,7 +38,7 @@ body {
 }
 .page-title {
     text-align: center;
-    font-size: 28px;
+    font-size: 30px; /* сделано чуть больше */
     color: #000;
     margin: 20px auto;
 }
@@ -56,8 +56,11 @@ body {
         font-size: 22px;
     }
     .page-title {
-        font-size: 22px;
+        font-size: 24px; /* тоже увеличено для читаемости */
         margin: 15px auto;
+    }
+    audio {
+        width: 90%;
     }
 }
 </style>
@@ -104,10 +107,12 @@ window.onload = function() {
 <div class="page-title" id="pageTitle">Music</div>
 
 <!-- Первый трек -->
-<audio controls>
-  <source src="https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?rlkey=2zivvcziwzoepmepbtx6abl0c&st=cxa4zos4&dl=1" type="audio/mpeg">
-  Ваш браузер не поддерживает аудио.
-</audio>
+<div class="music-player">
+  <audio controls>
+    <source src="https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?rlkey=2zivvcziwzoepmepbtx6abl0c&st=cxa4zos4&dl=1" type="audio/mpeg">
+    Ваш браузер не поддерживает аудио.
+  </audio>
+</div>
 
 </body>
 </html>

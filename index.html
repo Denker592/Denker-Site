@@ -13,9 +13,6 @@
   gtag('config', 'G-B6MKQ6BLDQ');
 </script>
 
-<!-- Simple Analytics -->
-<script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-
 <!-- SEO мета-теги -->
 <title>Denker Site</title>
 <meta name="description" content="Denker's Site! Play, download music for videos and even fonts!">
@@ -27,7 +24,6 @@
 <link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
 
 <style>
-/* === твои стили === */
 body { margin: 0; font-family: Arial, sans-serif; background-color: #f0f0f0; }
 .top-bar { width: 100%; height: 70px; background-color: #007BFF; display: flex; align-items: center; padding-left: 20px; justify-content: space-between; }
 .top-bar span { color: white; font-size: 28px; font-weight: bold; cursor: pointer; }
@@ -77,13 +73,17 @@ window.onload = function() {
     let savedLang = localStorage.getItem("siteLang") || "en";
     setLanguage(savedLang);
 
-    // Simple Analytics виджет
+    // CountAPI для статистики
     const statsDiv = document.getElementById("siteStats");
-    if (window.simpleAnalytics) {
-        simpleAnalytics.get('visits_today').then(count => {
-            statsDiv.innerText = `Сегодня посетителей: ${count}`;
-        });
-    }
+    fetch('https://api.countapi.xyz/hit/denker-site.github.io/visits')
+      .then(res => res.json())
+      .then(data => {
+        statsDiv.innerText = `Сегодня посетителей: ${data.value}`;
+      })
+      .catch(err => {
+        statsDiv.innerText = `Ошибка загрузки статистики`;
+        console.error(err);
+      });
 }
 </script>
 
@@ -127,12 +127,10 @@ window.onload = function() {
     <img src="https://i.ibb.co/cSXdw4pp/559-20250829135801.png" alt="Games">
     <div class="square-text" id="gamesText">Games</div>
 </div>
-
 <div class="square" onclick="goMusic()">
     <img src="https://i.ibb.co/xqtMjy1Y/image.png" alt="Music">
     <div class="square-text" id="musicText">Music</div>
 </div>
-
 <div class="square" onclick="goFonts()">
     <img src="https://i.ibb.co/8LWC7KxS/1297-20250907114722.png" alt="Fonts">
     <div class="square-text" id="fontsText">Fonts</div>

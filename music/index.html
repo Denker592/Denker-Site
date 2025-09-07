@@ -104,7 +104,7 @@
             document.getElementById("siteName").innerText = translations[lang].site;
             document.getElementById("pageTitle").innerText = translations[lang].title;
             document.getElementById("pageSubtitle").innerText = translations[lang].subtitle;
-            for (let i = 1; i <= 13; i++) {
+            for (let i = 1; i <= 3; i++) {
                 const btn = document.getElementById("downloadBtn" + i);
                 if (btn) btn.innerText = translations[lang].download;
             }
@@ -130,12 +130,28 @@
     <div class="page-title" id="pageTitle">Music</div>
     <div class="page-subtitle" id="pageSubtitle">Music for videos</div>
 
-    <!-- Третий трек -->
+    <!-- Трек 1 -->
+    <div class="music-player">
+        <audio controls>
+            <source src="https://denker592.github.io/Denker-Site/music/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3" type="audio/mpeg">
+        </audio>
+        <button id="downloadBtn1" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3','Lucas_Pittman_-_Swagger_Stagger.mp3')">Скачать</button>
+    </div>
+
+    <!-- Трек 2 -->
+    <div class="music-player">
+        <audio controls>
+            <source src="https://denker592.github.io/Denker-Site/music/Jules_Gaia_-_Break_Fast_73401343.mp3" type="audio/mpeg">
+        </audio>
+        <button id="downloadBtn2" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Jules_Gaia_-_Break_Fast_73401343.mp3','Jules_Gaia_-_Break_Fast.mp3')">Скачать</button>
+    </div>
+
+    <!-- Трек 3 -->
     <div class="music-player">
         <audio controls>
             <source src="https://denker592.github.io/Denker-Site/music/The%20Fly%20Guy%20Five%20-%20Extra%20Fries.mp3" type="audio/mpeg">
         </audio>
-        <button id="downloadBtn3" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/The%20Fly%20Guy%20Five%20-%20Extra%20Fries.mp3', 'The-Fly-Guy-Five-Extra-Fries.mp3')">Скачать</button>
+        <button id="downloadBtn3" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/The%20Fly%20Guy%20Five%20-%20Extra%20Fries.mp3','The-Fly-Guy-Five-Extra-Fries.mp3')">Скачать</button>
     </div>
 </body>
 </html>

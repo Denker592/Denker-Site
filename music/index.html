@@ -1,157 +1,169 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Denker Site</title>
-    <link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
-        .top-bar {
-            width: 100%;
-            height: 70px;
-            background-color: #007BFF;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            box-sizing: border-box;
-        }
-        .top-bar span {
-            color: white;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .lang-select {
-            font-size: 16px;
-            padding: 5px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-        }
-        .page-title {
-            text-align: center;
-            font-size: 60px;
-            color: #000;
-            margin: 25px auto 5px auto;
-            font-weight: bold;
-        }
-        .page-subtitle {
-            text-align: center;
-            font-size: 18px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-        .music-player {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin: 20px;
-        }
-        .music-player audio {
-            width: 55%;
-            max-width: 800px;
-        }
-        .download-button {
-            background-color: white;
-            color: #000;
-            font-size: 20px;
-            font-weight: bold;
-            padding: 10px 25px;
-            border: 2px solid #000;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .download-button:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 12px rgba(0,0,0,0.3);
-        }
-        @media (max-width: 768px) {
-            .top-bar span { font-size: 22px; }
-            .page-title { font-size: 40px; margin: 20px auto 5px auto; }
-            .page-subtitle { font-size: 16px; }
-            .music-player { flex-direction: column; gap: 10px; }
-            .music-player audio { width: 90%; }
-        }
-    </style>
-    <script>
-        function goHome() {
-            window.location.href = "https://denker592.github.io/Denker-Site/";
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Denker Site</title>
+<link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
 
-        function downloadFile(url, filename) {
-            const link = document.createElement("a");
-            link.href = url;
-            link.download = filename;
-            link.click();
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+.top-bar {
+    width: 100%;
+    height: 70px;
+    background-color: #007BFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.top-bar span {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.lang-select {
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+.page-title {
+    text-align: center;
+    font-size: 60px;
+    color: #000;
+    margin: 25px auto 5px auto;
+    font-weight: bold;
+}
+.page-subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+.music-player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px;
+}
+.music-player audio {
+    width: 55%;
+    max-width: 800px;
+}
+.download-button {
+    background-color: white;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 25px;
+    border: 2px solid #000;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.download-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.3);
+}
+@media (max-width: 768px) {
+    .top-bar span { font-size: 22px; }
+    .page-title { font-size: 40px; margin: 20px auto 5px auto; }
+    .page-subtitle { font-size: 16px; }
+    .music-player { flex-direction: column; gap: 10px; }
+    .music-player audio { width: 90%; }
+}
+</style>
 
-        const translations = {
-            "ru": { site: "DenkerSite", title: "Музыка", subtitle: "Музыка для видео", download: "Скачать" },
-            "uk": { site: "DenkerSite", title: "Музика", subtitle: "Музика для відео", download: "Завантажити" },
-            "en": { site: "DenkerSite", title: "Music", subtitle: "Music for videos", download: "Download" }
-        };
+<script>
+function goHome() {
+    window.location.href = "https://denker592.github.io/Denker-Site/";
+}
 
-        function setLanguage(lang) {
-            localStorage.setItem("siteLang", lang);
-            document.getElementById("siteName").innerText = translations[lang].site;
-            document.getElementById("pageTitle").innerText = translations[lang].title;
-            document.getElementById("pageSubtitle").innerText = translations[lang].subtitle;
-            for (let i = 1; i <= 3; i++) {
-                const btn = document.getElementById("downloadBtn" + i);
-                if (btn) btn.innerText = translations[lang].download;
-            }
-            document.getElementById("langSelect").value = lang;
-        }
+// Функция для скачивания любого файла
+function downloadFile(url, filename) {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    link.click();
+}
 
-        window.onload = function () {
-            let savedLang = localStorage.getItem("siteLang") || "en";
-            setLanguage(savedLang);
-        }
-    </script>
+// Переводы
+const translations = {
+    "ru": { site: "DenkerSite", title: "Музыка", subtitle: "Музыка для видео", download: "Скачать" },
+    "uk": { site: "DenkerSite", title: "Музика", subtitle: "Музика для відео", download: "Завантажити" },
+    "en": { site: "DenkerSite", title: "Music", subtitle: "Music for videos", download: "Download" }
+};
+
+function setLanguage(lang) {
+    localStorage.setItem("siteLang", lang);
+    document.getElementById("siteName").innerText = translations[lang].site;
+    document.getElementById("pageTitle").innerText = translations[lang].title;
+    document.getElementById("pageSubtitle").innerText = translations[lang].subtitle;
+    for(let i=1; i<=13; i++) {
+        const btn = document.getElementById("downloadBtn"+i);
+        if(btn) btn.innerText = translations[lang].download;
+    }
+    document.getElementById("langSelect").value = lang;
+}
+
+window.onload = function() {
+    let savedLang = localStorage.getItem("siteLang") || "en";
+    setLanguage(savedLang);
+}
+</script>
 </head>
+
 <body>
-    <div class="top-bar">
-        <span id="siteName" onclick="goHome()">DenkerSite</span>
-        <select id="langSelect" class="lang-select" onchange="setLanguage(this.value)">
-            <option value="en">English</option>
-            <option value="ru">Русский</option>
-            <option value="uk">Українська</option>
-        </select>
-    </div>
+<div class="top-bar">
+    <span id="siteName" onclick="goHome()">DenkerSite</span>
+    <select id="langSelect" class="lang-select" onchange="setLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+        <option value="uk">Українська</option>
+    </select>
+</div>
 
-    <div class="page-title" id="pageTitle">Music</div>
-    <div class="page-subtitle" id="pageSubtitle">Music for videos</div>
+<div class="page-title" id="pageTitle">Music</div>
+<div class="page-subtitle" id="pageSubtitle">Music for videos</div>
 
-    <!-- Трек 1 -->
-    <div class="music-player">
-        <audio controls>
-            <source src="https://denker592.github.io/Denker-Site/music/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3" type="audio/mpeg">
-        </audio>
-        <button id="downloadBtn1" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3','Lucas_Pittman_-_Swagger_Stagger.mp3')">Скачать</button>
-    </div>
+<!-- Треки -->
 
-    <!-- Трек 2 -->
-    <div class="music-player">
-        <audio controls>
-            <source src="https://denker592.github.io/Denker-Site/music/Jules_Gaia_-_Break_Fast_73401343.mp3" type="audio/mpeg">
-        </audio>
-        <button id="downloadBtn2" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Jules_Gaia_-_Break_Fast_73401343.mp3','Jules_Gaia_-_Break_Fast.mp3')">Скачать</button>
-    </div>
+<div class="music-player">
+  <audio controls>
+    <source src="https://denker592.github.io/Denker-Site/music/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3" type="audio/mpeg">
+  </audio>
+  <button id="downloadBtn1" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3','Lucas_Pittman_-_Swagger_Stagger.mp3')">Download</button>
+</div>
 
-    <!-- Трек 3 -->
-    <div class="music-player">
-        <audio controls>
-            <source src="https://denker592.github.io/Denker-Site/music/The%20Fly%20Guy%20Five%20-%20Extra%20Fries.mp3" type="audio/mpeg">
-        </audio>
-        <button id="downloadBtn3" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/The%20Fly%20Guy%20Five%20-%20Extra%20Fries.mp3','The-Fly-Guy-Five-Extra-Fries.mp3')">Скачать</button>
-    </div>
+<div class="music-player">
+  <audio controls>
+    <source src="https://denker592.github.io/Denker-Site/music/Jules_Gaia_-_Break_Fast_73401343.mp3" type="audio/mpeg">
+  </audio>
+  <button id="downloadBtn2" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Jules_Gaia_-_Break_Fast_73401343.mp3','Jules_Gaia_-_Break_Fast.mp3')">Download</button>
+</div>
+
+<div class="music-player">
+  <audio controls>
+    <source src="https://denker592.github.io/Denker-Site/music/The Fly Guy Five - Extra Fries.mp3" type="audio/mpeg">
+  </audio>
+  <button id="downloadBtn3" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/The Fly Guy Five - Extra Fries.mp3','The_Fly_Guy_Five_-_Extra_Fries.mp3')">Download</button>
+</div>
+
+<div class="music-player">
+  <audio controls>
+    <source src="https://denker592.github.io/Denker-Site/music/Faidherbe_Square_-_ProleteR.mp3" type="audio/mpeg">
+  </audio>
+  <button id="downloadBtn4" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Faidherbe_Square_-_ProleteR.mp3','Faidherbe_Square_-_ProleteR.mp3')">Download</button>
+</div>
+
 </body>
 </html>

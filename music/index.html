@@ -88,7 +88,7 @@ function goHome() {
     window.location.href = "https://denker592.github.io/Denker-Site/";
 }
 
-// Функция для скачивания любого файла
+// Универсальная функция для скачивания
 function downloadFile(url, filename) {
     const link = document.createElement("a");
     link.href = url;
@@ -108,7 +108,7 @@ function setLanguage(lang) {
     document.getElementById("siteName").innerText = translations[lang].site;
     document.getElementById("pageTitle").innerText = translations[lang].title;
     document.getElementById("pageSubtitle").innerText = translations[lang].subtitle;
-    for(let i=1; i<=6; i++) {
+    for(let i=1; i<=7; i++) {
         const btn = document.getElementById("downloadBtn"+i);
         if(btn) btn.innerText = translations[lang].download;
     }
@@ -135,7 +135,7 @@ window.onload = function() {
 <div class="page-title" id="pageTitle">Music</div>
 <div class="page-subtitle" id="pageSubtitle">Music for videos</div>
 
-<!-- 6 треков -->
+<!-- Треки -->
 <div class="music-player">
   <audio controls>
     <source src="https://denker592.github.io/Denker-Site/music/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3" type="audio/mpeg">
@@ -152,9 +152,9 @@ window.onload = function() {
 
 <div class="music-player">
   <audio controls>
-    <source src="https://denker592.github.io/Denker-Site/music/The Fly Guy Five - Extra Fries.mp3" type="audio/mpeg">
+    <source src="https://denker592.github.io/Denker-Site/music/The%20Fly%20Guy%20Five%20-%20Extra%20Fries.mp3" type="audio/mpeg">
   </audio>
-  <button id="downloadBtn3" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/The Fly Guy Five - Extra Fries.mp3','The_Fly_Guy_Five_-_Extra_Fries.mp3')">Download</button>
+  <button id="downloadBtn3" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/The%20Fly%20Guy%20Five%20-%20Extra%20Fries.mp3','The_Fly_Guy_Five_-_Extra_Fries.mp3')">Download</button>
 </div>
 
 <div class="music-player">
@@ -176,6 +176,13 @@ window.onload = function() {
     <source src="https://denker592.github.io/Denker-Site/music/Kevin%20MacLeod%20-%20Barroom%20Ballet%20Silent%20Film%20Light%20(Happy).mp3" type="audio/mpeg">
   </audio>
   <button id="downloadBtn6" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Kevin%20MacLeod%20-%20Barroom%20Ballet%20Silent%20Film%20Light%20(Happy).mp3','Kevin_MacLeod_-_Barroom_Ballet_Silent_Film_Light_Happy.mp3')">Download</button>
+</div>
+
+<div class="music-player">
+  <audio controls>
+    <source src="https://denker592.github.io/Denker-Site/music/Faidherbe_Square_-_ProleteR.mp3" type="audio/mpeg">
+  </audio>
+  <button id="downloadBtn7" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Faidherbe_Square_-_ProleteR.mp3','Faidherbe_Square_-_ProleteR.mp3')">Download</button>
 </div>
 
 </body>

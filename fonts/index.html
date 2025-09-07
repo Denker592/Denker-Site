@@ -13,9 +13,6 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 .top-bar {
     width: 100%;
@@ -25,6 +22,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
+    box-sizing: border-box;
 }
 .top-bar span {
     color: white;
@@ -39,56 +37,49 @@ body {
     border: none;
     cursor: pointer;
 }
-.center-text {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 64px;
-    font-weight: bold;
-    color: #000;
+.page-title {
     text-align: center;
+    font-size: 60px;
+    color: #000;
+    margin: 25px auto 5px auto;
+    font-weight: bold;
 }
-@media (max-width: 600px) {
-    .top-bar {
-        height: 60px;
-        padding: 0 10px;
-    }
-    .top-bar span {
-        font-size: 22px;
-    }
-    .center-text {
-        font-size: 40px;
-        padding: 0 10px;
-    }
+.page-subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+    .top-bar span { font-size: 22px; }
+    .page-title { font-size: 40px; margin: 20px auto 5px auto; }
+    .page-subtitle { font-size: 16px; }
 }
 </style>
 
 <script>
-// Переводы текста в центре
+function goHome() {
+    window.location.href = "https://denker592.github.io/Denker-Site/";
+}
+
+// Переводы текста
 const translations = {
-    "ru": { centerText: "Шрифты" },
-    "uk": { centerText: "Шрифти" },
-    "en": { centerText: "Fonts" }
+    "ru": { site: "DenkerSite", title: "Шрифты", subtitle: "Коллекция шрифтов" },
+    "uk": { site: "DenkerSite", title: "Шрифти", subtitle: "Колекція шрифтів" },
+    "en": { site: "DenkerSite", title: "Fonts", subtitle: "Fonts collection" }
 };
 
-// Установка языка
 function setLanguage(lang) {
     localStorage.setItem("siteLang", lang);
-    document.getElementById("siteName").innerText = "DenkerSite";
-    document.getElementById("centerText").innerText = translations[lang].centerText;
+    document.getElementById("siteName").innerText = translations[lang].site;
+    document.getElementById("pageTitle").innerText = translations[lang].title;
+    document.getElementById("pageSubtitle").innerText = translations[lang].subtitle;
     document.getElementById("langSelect").value = lang;
 }
 
-// При загрузке
 window.onload = function() {
     let savedLang = localStorage.getItem("siteLang") || "en";
     setLanguage(savedLang);
-}
-
-// Переход на главную при клике на название сайта
-function goHome() {
-    window.location.href = "https://denker592.github.io/Denker-Site/";
 }
 </script>
 </head>
@@ -103,7 +94,8 @@ function goHome() {
     </select>
 </div>
 
-<div class="center-text" id="centerText">Fonts</div>
+<div class="page-title" id="pageTitle">Fonts</div>
+<div class="page-subtitle" id="pageSubtitle">Fonts collection</div>
 
 </body>
 </html>

@@ -98,9 +98,9 @@ function goHome() {
 
 // Переводы
 const translations = {
-    "ru": { site: "DenkerSite", title: "Шрифты", subtitle: "Коллекция шрифтов", download: "Скачать шрифт" },
-    "uk": { site: "DenkerSite", title: "Шрифти", subtitle: "Колекція шрифтів", download: "Завантажити шрифт" },
-    "en": { site: "DenkerSite", title: "Fonts", subtitle: "Fonts collection", download: "Download Font" }
+    "ru": { site: "DenkerSite", title: "Шрифты", subtitle: "Коллекция шрифтов", download1: "Скачать шрифт", download2: "Скачать второй шрифт" },
+    "uk": { site: "DenkerSite", title: "Шрифти", subtitle: "Колекція шрифтів", download1: "Завантажити шрифт", download2: "Завантажити другий шрифт" },
+    "en": { site: "DenkerSite", title: "Fonts", subtitle: "Fonts collection", download1: "Download Font", download2: "Download Second Font" }
 };
 
 function setLanguage(lang) {
@@ -108,7 +108,8 @@ function setLanguage(lang) {
     document.getElementById("siteName").innerText = translations[lang].site;
     document.getElementById("pageTitle").innerText = translations[lang].title;
     document.getElementById("pageSubtitle").innerText = translations[lang].subtitle;
-    document.getElementById("downloadBtn").innerText = translations[lang].download;
+    document.getElementById("downloadBtn1").innerText = translations[lang].download1;
+    document.getElementById("downloadBtn2").innerText = translations[lang].download2;
     document.getElementById("langSelect").value = lang;
 }
 
@@ -132,9 +133,16 @@ window.onload = function() {
 <div class="page-title" id="pageTitle">Шрифты</div>
 <div class="page-subtitle" id="pageSubtitle">Коллекция шрифтов</div>
 
+<!-- Первый шрифт -->
 <div class="page-container">
     <img class="page-image" src="https://i.ibb.co/PZnKF52B/1298-20250907122335.png" alt="Коллекция шрифтов">
-    <a id="downloadBtn" class="download-button" href="https://denker592.github.io/Denker-Site/fonts/Chicken%20Gun%20Font.otf" download>Скачать шрифт</a>
+    <a id="downloadBtn1" class="download-button" href="https://denker592.github.io/Denker-Site/fonts/Chicken%20Gun%20Font.otf" download>Скачать шрифт</a>
+</div>
+
+<!-- Второй шрифт -->
+<div class="page-container">
+    <img class="page-image" src="https://i.ibb.co/qLg8MbwN/1298-20250907133157.png" alt="Old Roblox Font">
+    <a id="downloadBtn2" class="download-button" href="https://denker592.github.io/Denker-Site/fonts/Old%20Roblox%20Font.otf" download>Скачать второй шрифт</a>
 </div>
 
 </body>

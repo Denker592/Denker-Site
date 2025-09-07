@@ -1,119 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Denker Site</title>
 
-<!-- SEO мета-теги -->
-<title>Denker Site - Music</title>
-<meta name="description" content="Denker's Music Page">
-<meta name="author" content="Denker">
-
-<!-- Иконка сайта -->
 <link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-}
-.top-bar {
-    width: 100%;
-    height: 70px;
-    background-color: #007BFF;
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-    justify-content: space-between;
-}
-.top-bar span {
-    color: white;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.lang-select {
-    margin-right: 20px;
-    font-size: 16px;
-    padding: 5px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-}
-.page-title {
-    text-align: center;
-    font-size: 28px;
-    color: #000;
-    margin: 20px auto;
-}
-.music-player {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-}
-@media (max-width: 600px) {
-    .top-bar {
-        height: 60px;
-        padding-left: 10px;
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #fff;
+        color: black;
+        text-align: center;
     }
-    .top-bar span {
+
+    /* Синяя верхняя панель */
+    .topbar {
+        background: #0056d6;
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    select {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    /* Заголовок "Музыка" */
+    .music-title {
+        margin-top: 20px;
         font-size: 22px;
+        font-weight: bold;
+        color: black;
     }
-    .page-title {
-        font-size: 22px;
-        margin: 15px auto;
+
+    /* Плеер */
+    audio {
+        margin-top: 15px;
+        width: 300px;
     }
-}
+
+    /* Оптимизация под телефоны */
+    @media (max-width: 600px) {
+        .title {
+            font-size: 18px;
+        }
+        .topbar {
+            padding: 10px;
+        }
+        select {
+            font-size: 12px;
+        }
+        .music-title {
+            font-size: 18px;
+        }
+        audio {
+            width: 90%;
+        }
+    }
 </style>
+</head>
+<body>
+
+    <div class="topbar">
+        <div class="title">DenkerSite</div>
+        <select id="languageSwitcher">
+            <option value="ru">Русский</option>
+            <option value="uk">Українська</option>
+            <option value="en">English</option>
+        </select>
+    </div>
+
+    <!-- Заголовок -->
+    <div class="music-title">Музыка</div>
+
+    <!-- Плеер -->
+    <audio controls>
+        <source src="https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?rlkey=2zivvcziwzoepmepbtx6abl0c&st=cxa4zos4&dl=1" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио.
+    </audio>
 
 <script>
-function goHome() {
-    window.location.href = "https://denker592.github.io/Denker-Site/";
-}
+    const translations = {
+        ru: { title: "DenkerSite", music: "Музыка" },
+        uk: { title: "DenkerSite", music: "Музика" },
+        en: { title: "DenkerSite", music: "Music" }
+    };
 
-// Переводы
-const translations = {
-    "ru": { site: "DenkerSite", title: "Музыка" },
-    "uk": { site: "DenkerSite", title: "Музика" },
-    "en": { site: "DenkerSite", title: "Music" }
-};
+    const langSelect = document.getElementById("languageSwitcher");
+    const titleEl = document.querySelector(".title");
+    const musicTitleEl = document.querySelector(".music-title");
 
-// Установка языка
-function setLanguage(lang) {
-    localStorage.setItem("siteLang", lang);
-    document.getElementById("siteName").innerText = translations[lang].site;
-    document.getElementById("pageTitle").innerText = translations[lang].title;
-    document.getElementById("langSelect").value = lang;
-}
-
-// При загрузке
-window.onload = function() {
-    let savedLang = localStorage.getItem("siteLang") || "en";
-    setLanguage(savedLang);
-}
+    langSelect.addEventListener("change", () => {
+        const lang = langSelect.value;
+        titleEl.textContent = translations[lang].title;
+        musicTitleEl.textContent = translations[lang].music;
+    });
 </script>
-</head>
-
-<body>
-<div class="top-bar">
-    <span id="siteName" onclick="goHome()">DenkerSite</span>
-    <select id="langSelect" class="lang-select" onchange="setLanguage(this.value)">
-        <option value="en">English</option>
-        <option value="ru">Русский</option>
-        <option value="uk">Українська</option>
-    </select>
-</div>
-
-<!-- Заголовок -->
-<div class="page-title" id="pageTitle">Music</div>
-
-<!-- Первый трек -->
-<div class="music-player">
-    <iframe src="https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?rlkey=2zivvcziwzoepmepbtx6abl0c&st=cxa4zos4&dl=0" 
-        width="300" height="100" allow="autoplay; encrypted-media" 
-        sandbox="allow-same-origin allow-scripts"></iframe>
-</div>
 
 </body>
 </html>

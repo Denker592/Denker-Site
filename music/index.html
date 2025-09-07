@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- SEO мета-теги -->
-<title>Denker Site</title>
-<meta name="description" content="Denker's Site!">
+<title>Denker Site - Music</title>
+<meta name="description" content="Denker's Music Page">
 <meta name="author" content="Denker">
 
 <!-- Иконка сайта -->
@@ -41,6 +41,17 @@ body {
     border: none;
     cursor: pointer;
 }
+.page-title {
+    text-align: center;
+    font-size: 28px;
+    color: #000;
+    margin: 20px auto;
+}
+.music-player {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
 @media (max-width: 600px) {
     .top-bar {
         height: 60px;
@@ -48,6 +59,10 @@ body {
     }
     .top-bar span {
         font-size: 22px;
+    }
+    .page-title {
+        font-size: 22px;
+        margin: 15px auto;
     }
 }
 </style>
@@ -59,15 +74,16 @@ function goHome() {
 
 // Переводы
 const translations = {
-    "ru": { site: "DenkerSite" },
-    "uk": { site: "DenkerSite" },
-    "en": { site: "DenkerSite" }
+    "ru": { site: "DenkerSite", title: "Музыка" },
+    "uk": { site: "DenkerSite", title: "Музика" },
+    "en": { site: "DenkerSite", title: "Music" }
 };
 
 // Установка языка
 function setLanguage(lang) {
     localStorage.setItem("siteLang", lang);
     document.getElementById("siteName").innerText = translations[lang].site;
+    document.getElementById("pageTitle").innerText = translations[lang].title;
     document.getElementById("langSelect").value = lang;
 }
 
@@ -88,5 +104,16 @@ window.onload = function() {
         <option value="uk">Українська</option>
     </select>
 </div>
+
+<!-- Заголовок -->
+<div class="page-title" id="pageTitle">Music</div>
+
+<!-- Первый трек -->
+<div class="music-player">
+    <iframe src="https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?rlkey=2zivvcziwzoepmepbtx6abl0c&st=cxa4zos4&dl=0" 
+        width="300" height="100" allow="autoplay; encrypted-media" 
+        sandbox="allow-same-origin allow-scripts"></iframe>
+</div>
+
 </body>
 </html>

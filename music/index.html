@@ -90,17 +90,11 @@ function goHome() {
     window.location.href = "https://denker592.github.io/Denker-Site/";
 }
 
-function downloadAudio1() {
+// Функция для скачивания любого файла
+function downloadFile(url, filename) {
     const link = document.createElement("a");
-    link.href = "https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?rlkey=2zivvcziwzoepmepbtx6abl0c&dl=1";
-    link.download = "Lucas_Pittman_-_Swagger_Stagger.mp3";
-    link.click();
-}
-
-function downloadAudio2() {
-    const link = document.createElement("a");
-    link.href = "https://www.dropbox.com/scl/fi/ganttsfaow28jez5xnu5a/Jules_Gaia_-_Break_Fast_73401343.mp3?rlkey=8p31k0awbm38pftoi7n0mqabj&dl=1";
-    link.download = "Jules_Gaia_-_Break_Fast.mp3";
+    link.href = url;
+    link.download = filename;
     link.click();
 }
 
@@ -116,8 +110,10 @@ function setLanguage(lang) {
     document.getElementById("siteName").innerText = translations[lang].site;
     document.getElementById("pageTitle").innerText = translations[lang].title;
     document.getElementById("pageSubtitle").innerText = translations[lang].subtitle;
-    document.getElementById("downloadBtn1").innerText = translations[lang].download;
-    document.getElementById("downloadBtn2").innerText = translations[lang].download;
+    for(let i=1; i<=13; i++) {
+        const btn = document.getElementById("downloadBtn"+i);
+        if(btn) btn.innerText = translations[lang].download;
+    }
     document.getElementById("langSelect").value = lang;
 }
 
@@ -141,59 +137,97 @@ window.onload = function() {
 <div class="page-title" id="pageTitle">Music</div>
 <div class="page-subtitle" id="pageSubtitle">Music for videos</div>
 
-<!-- Музыка 1 -->
+<!-- 13 треков -->
 <div class="music-player">
   <audio controls>
-    <source src="https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?rlkey=2zivvcziwzoepmepbtx6abl0c&dl=1" type="audio/mpeg">
-    Ваш браузер не поддерживает аудио.
+    <source src="https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?dl=1" type="audio/mpeg">
   </audio>
-  <button id="downloadBtn1" class="download-button" onclick="downloadAudio1()">Скачать</button>
+  <button id="downloadBtn1" class="download-button" onclick="downloadFile('https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?dl=1','Lucas_Pittman_-_Swagger_Stagger.mp3')">Скачать</button>
 </div>
 
-<!-- Музыка 2 -->
 <div class="music-player">
   <audio controls>
-    <source src="https://www.dropbox.com/scl/fi/ganttsfaow28jez5xnu5a/Jules_Gaia_-_Break_Fast_73401343.mp3?rlkey=8p31k0awbm38pftoi7n0mqabj&dl=1" type="audio/mpeg">
-    Ваш браузер не поддерживает аудио.
+    <source src="https://www.dropbox.com/scl/fi/ganttsfaow28jez5xnu5a/Jules_Gaia_-_Break_Fast_73401343.mp3?dl=1" type="audio/mpeg">
   </audio>
-  <button id="downloadBtn2" class="download-button" onclick="downloadAudio2()">Скачать</button>
+  <button id="downloadBtn2" class="download-button" onclick="downloadFile('https://www.dropbox.com/scl/fi/ganttsfaow28jez5xnu5a/Jules_Gaia_-_Break_Fast_73401343.mp3?dl=1','Jules_Gaia_-_Break_Fast.mp3')">Скачать</button>
 </div>
 
-<!-- Музыка 3 -->
 <div class="music-player">
   <audio controls>
-    <source src="https://www.dropbox.com/scl/fi/si1at65xnkt3ctcuyibt0/The-Fly-Guy-Five-Extra-Fries.mp3?rlkey=zcp42de17gfc3u9q777q9tyt5&dl=1" type="audio/mpeg">
-    Ваш браузер не поддерживает аудио.
+    <source src="https://www.dropbox.com/scl/fi/si1at65xnkt3ctcuyibt0/The-Fly-Guy-Five-Extra-Fries.mp3?dl=1" type="audio/mpeg">
   </audio>
-  <button id="downloadBtn3" class="download-button" onclick="downloadAudio3()">Скачать</button>
+  <button id="downloadBtn3" class="download-button" onclick="downloadFile('https://www.dropbox.com/scl/fi/si1at65xnkt3ctcuyibt0/The-Fly-Guy-Five-Extra-Fries.mp3?dl=1','The-Fly-Guy-Five-Extra-Fries.mp3')">Скачать</button>
 </div>
 
-<script>
-function downloadAudio3() {
-    const link = document.createElement("a");
-    link.href = "https://www.dropbox.com/scl/fi/si1at65xnkt3ctcuyibt0/The-Fly-Guy-Five-Extra-Fries.mp3?rlkey=zcp42de17gfc3u9q777q9tyt5&dl=1";
-    link.download = "The-Fly-Guy-Five-Extra-Fries.mp3";
-    link.click();
-}
-</script>
-
-<!-- Музыка 4 -->
 <div class="music-player">
   <audio controls>
-    <source src="https://www.dropbox.com/scl/fi/0vcxopdy8a1yu2kp3vq9q/Faidherbe_Square_-_ProleteR.mp3?rlkey=wh4quyjvhl5asdigia7f25vgg&dl=1" type="audio/mpeg">
-    Ваш браузер не поддерживает аудио.
+    <source src="https://www.dropbox.com/scl/fi/0vcxopdy8a1yu2kp3vq9q/Faidherbe_Square_-_ProleteR.mp3?dl=1" type="audio/mpeg">
   </audio>
-  <button id="downloadBtn4" class="download-button" onclick="downloadAudio4()">Скачать</button>
+  <button id="downloadBtn4" class="download-button" onclick="downloadFile('https://www.dropbox.com/scl/fi/0vcxopdy8a1yu2kp3vq9q/Faidherbe_Square_-_ProleteR.mp3?dl=1','Faidherbe_Square_-_ProleteR.mp3')">Скачать</button>
 </div>
 
-<script>
-function downloadAudio4() {
-    const link = document.createElement("a");
-    link.href = "https://www.dropbox.com/scl/fi/0vcxopdy8a1yu2kp3vq9q/Faidherbe_Square_-_ProleteR.mp3?rlkey=wh4quyjvhl5asdigia7f25vgg&dl=1";
-    link.download = "Faidherbe_Square_-_ProleteR.mp3";
-    link.click();
-}
-</script>
+<div class="music-player">
+  <audio controls>
+    <source src="https://www.dropbox.com/scl/fi/30zfy4m8so5hpapsb81jx/Kevin-MacLeod-Jaunty-Gumption-Happy.mp3?dl=1" type="audio/mpeg">
+  </audio>
+  <button id="downloadBtn5" class="download-button" onclick="downloadFile('https://www.dropbox.com/scl/fi/30zfy4m8so5hpapsb81jx/Kevin-MacLeod-Jaunty-Gumption-Happy.mp3?dl=1','Kevin-MacLeod-Jaunty-Gumption-Happy.mp3')">Скачать</button>
+</div>
+
+<div class="music-player">
+  <audio controls>
+    <source src="https://www.dropbox.com/scl/fi/gxwih8x9wd3w8q0t2dofy/Kevin-MacLeod-Barroom-Ballet-Silent-Film-Light-Happy.mp3?dl=1" type="audio/mpeg">
+  </audio>
+  <button id="downloadBtn6" class="download-button" onclick="downloadFile('https://www.dropbox.com/scl/fi/gxwih8x9wd3w8q0t2dofy/Kevin-MacLeod-Barroom-Ballet-Silent-Film-Light-Happy.mp3?dl=1','Kevin-MacLeod-Barroom-Ballet-Silent-Film-Light-Happy.mp3')">Скачать</button>
+</div>
+
+<div class="music-player">
+  <audio controls>
+    <source src="https://www.dropbox.com/scl/fi/261nddmxzvbs51xbphjp7/Kevin-MacLeod-Batty-McFaddin-Silent-Film-Light-Dramatic.mp3?dl=1" type="audio/mpeg">
+  </audio>
+  <button id="downloadBtn7" class="download-button" onclick="downloadFile('https://www.dropbox.com/scl/fi/261nddmxzvbs51xbphjp7/Kevin-MacLeod-Batty-McFaddin-Silent-Film-Light-Dramatic.mp3?dl=1','Kevin-MacLeod-Batty-McFaddin.mp3')">Скачать</button>
+</div>
+
+<div class="music-player">
+  <audio controls>
+    <source src="https://www.dropbox.com/scl/fi/li641up6dei3gd1w3thnz/william_jacobs_-_krusty_krab_spongebob_trap_remix_vine_theme_-zf.fm.mp3?dl=1" type="audio/mpeg">
+  </audio>
+  <button id="downloadBtn8" class="download-button" onclick="downloadFile('https://www.dropbox.com/scl/fi/li641up6dei3gd1w3thnz/william_jacobs_-_krusty_krab_spongebob_trap_remix_vine_theme_-zf.fm.mp3?dl=1','Krusty_Krab_Spongebob_Trap_Remix.mp3')">Скачать</button>
+</div>
+
+<div class="music-player">
+  <audio controls>
+    <source src="https://www.dropbox.com/scl/fi/ogdh83by0kw74s7snbipj/sellamusicnet_Hill_climb_racing_-_Main_Theme_76820735.mp3?dl=1" type="audio/mpeg">
+  </audio>
+  <button id="downloadBtn9" class="download-button" onclick="downloadFile('https://www.dropbox.com/scl/fi/ogdh83by0kw74s7snbipj/sellamusicnet_Hill_climb_racing_-_Main_Theme_76820735.mp3?dl=1','Hill_climb_racing_Main_Theme.mp3')">Скачать</button>
+</div>
+
+<div class="music-player">
+  <audio controls>
+    <source src="https://www.dropbox.com/scl/fi/edgvx0nsr64fmpqr52sjl/Kevin-MacLeod-Bushwick-Tarantella-Happy.mp3?dl=1" type="audio/mpeg">
+  </audio>
+  <button id="downloadBtn10" class="download-button" onclick="downloadFile('https://www.dropbox.com/scl/fi/edgvx0nsr64fmpqr52sjl/Kevin-MacLeod-Bushwick-Tarantella-Happy.mp3?dl=1','Kevin-MacLeod-Bushwick-Tarantella.mp3')">Скачать</button>
+</div>
+
+<div class="music-player">
+  <audio controls>
+    <source src="https://www.dropbox.com/scl/fi/tigr4x8p2sx5u9b08dv32/Kevin-MacLeod-Five-Card-Shuffle-Bright.mp3?dl=1" type="audio/mpeg">
+  </audio>
+  <button id="downloadBtn11" class="download-button" onclick="downloadFile('https://www.dropbox.com/scl/fi/tigr4x8p2sx5u9b08dv32/Kevin-MacLeod-Five-Card-Shuffle-Bright.mp3?dl=1','Kevin-MacLeod-Five-Card-Shuffle-Bright.mp3')">Скачать</button>
+</div>
+
+<div class="music-player">
+  <audio controls>
+    <source src="https://www.dropbox.com/scl/fi/urkknuiok1ks322dyvf1j/GP-Jack_Wang_-_Darkness_of_Light_73270445.mp3?dl=1" type="audio/mpeg">
+  </audio>
+  <button id="downloadBtn12" class="download-button" onclick="downloadFile('https://www.dropbox.com/scl/fi/urkknuiok1ks322dyvf1j/GP-Jack_Wang_-_Darkness_of_Light_73270445.mp3?dl=1','GP-Jack_Wang-Darkness_of_Light.mp3')">Скачать</button>
+</div>
+
+<div class="music-player">
+  <audio controls>
+    <source src="https://www.dropbox.com/scl/fi/wq7qvcsgc8ozgmlo5qz67/Kevin-MacLeod-Call-to-Adventure-Comedy-Dramatic.mp3?dl=1" type="audio/mpeg">
+  </audio>
+  <button id="downloadBtn13" class="download-button" onclick="downloadFile('https://www.dropbox.com/scl/fi/wq7qvcsgc8ozgmlo5qz67/Kevin-MacLeod-Call-to-Adventure-Comedy-Dramatic.mp3?dl=1','Kevin-MacLeod-Call-to-Adventure.mp3')">Скачать</button>
+</div>
 
 </body>
 </html>

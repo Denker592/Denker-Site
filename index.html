@@ -176,6 +176,9 @@ function goGames() {
 function goMusic() {
     window.location.href = "https://denker592.github.io/Denker-Site/music";
 }
+function goFonts() {
+    window.location.href = "https://denker592.github.io/Denker-Site/fonts";
+}
 
 // Переводы
 const translations = {
@@ -183,19 +186,22 @@ const translations = {
         welcome: "Привет! Это все ссылки Denker'a",
         subscribe: "Подписывайтесь на все каналы! Ссылочки есть немного выше!",
         games: "Игры",
-        music: "Музыка"
+        music: "Музыка",
+        fonts: "Шрифты"
     },
     "uk": {
         welcome: "Привіт! Це всі посилання Denker'a",
         subscribe: "Підписуйтесь на всі канали! Посилання трохи вище!",
         games: "Ігри",
-        music: "Музика"
+        music: "Музика",
+        fonts: "Шрифти"
     },
     "en": {
         welcome: "Hello! These are all Denker's links",
         subscribe: "Subscribe to all channels! Links are just above!",
         games: "Games",
-        music: "Music"
+        music: "Music",
+        fonts: "Fonts"
     }
 };
 
@@ -206,6 +212,7 @@ function setLanguage(lang) {
     document.getElementById("subscribe").innerText = translations[lang].subscribe;
     document.getElementById("gamesText").innerText = translations[lang].games;
     document.getElementById("musicText").innerText = translations[lang].music;
+    document.getElementById("fontsText").innerText = translations[lang].fonts;
     document.getElementById("langSelect").value = lang;
 }
 
@@ -270,6 +277,11 @@ window.onload = function() {
 <div class="square" onclick="goMusic()">
     <img src="https://i.ibb.co/xqtMjy1Y/image.png" alt="Music">
     <div class="square-text" id="musicText">Music</div>
+</div>
+
+<div class="square" onclick="goFonts()">
+    <img src="https://i.ibb.co/8LWC7KxS/1297-20250907114722.png" alt="Fonts">
+    <div class="square-text" id="fontsText">Fonts</div>
 </div>
 
 </body>

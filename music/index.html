@@ -177,5 +177,23 @@ function downloadAudio3() {
 }
 </script>
 
+<!-- Музыка 4 -->
+<div class="music-player">
+  <audio controls>
+    <source src="https://www.dropbox.com/scl/fi/0vcxopdy8a1yu2kp3vq9q/Faidherbe_Square_-_ProleteR.mp3?rlkey=wh4quyjvhl5asdigia7f25vgg&dl=1" type="audio/mpeg">
+    Ваш браузер не поддерживает аудио.
+  </audio>
+  <button id="downloadBtn4" class="download-button" onclick="downloadAudio4()">Скачать</button>
+</div>
+
+<script>
+function downloadAudio4() {
+    const link = document.createElement("a");
+    link.href = "https://www.dropbox.com/scl/fi/0vcxopdy8a1yu2kp3vq9q/Faidherbe_Square_-_ProleteR.mp3?rlkey=wh4quyjvhl5asdigia7f25vgg&dl=1";
+    link.download = "Faidherbe_Square_-_ProleteR.mp3";
+    link.click();
+}
+</script>
+
 </body>
 </html>

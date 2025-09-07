@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Denker Site</title>
 
 <link rel="icon" type="image/png" href="https://i.ibb.co/F4WBJ9mc/554-20250829114518.png">
@@ -20,8 +19,8 @@ body {
     background-color: #007BFF;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 0 20px;
+    justify-content: space-between;
     box-sizing: border-box;
 }
 .top-bar span {
@@ -39,34 +38,29 @@ body {
 }
 .page-title {
     text-align: center;
-    font-size: 60px;
+    font-size: 48px;
     color: #000;
-    margin: 25px auto 5px auto;
-    font-weight: bold;
+    margin: 20px auto 10px auto;
 }
 .page-subtitle {
     text-align: center;
     font-size: 18px;
     color: #333;
-    margin-bottom: 20px;
+    margin: 0 auto 30px auto;
 }
 .music-player {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
-    margin: 20px;
-}
-.music-player audio {
-    width: 55%;
-    max-width: 800px;
+    margin-bottom: 20px;
 }
 .download-button {
     background-color: white;
     color: #000;
     font-size: 20px;
     font-weight: bold;
-    padding: 10px 25px;
+    padding: 8px 20px;
     border: 2px solid #000;
     border-radius: 12px;
     cursor: pointer;
@@ -74,33 +68,39 @@ body {
 }
 .download-button:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
 }
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .top-bar span { font-size: 22px; }
-    .page-title { font-size: 40px; margin: 20px auto 5px auto; }
+    .page-title { font-size: 36px; }
     .page-subtitle { font-size: 16px; }
-    .music-player { flex-direction: column; gap: 10px; }
-    .music-player audio { width: 90%; }
+    .download-button { font-size: 16px; padding: 6px 16px; }
 }
 </style>
 
 <script>
+// Переключение на главную
 function goHome() {
     window.location.href = "https://denker592.github.io/Denker-Site/";
 }
 
+// Скачивание аудио
 function downloadAudio1() {
     const link = document.createElement("a");
     link.href = "https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?rlkey=2zivvcziwzoepmepbtx6abl0c&dl=1";
-    link.download = "Lucas_Pittman_-_Swagger_Stagger.mp3";
+    link.download = "Lucas_Pittman_-_Swagger_Stagger_72773217.mp3";
     link.click();
 }
-
 function downloadAudio2() {
     const link = document.createElement("a");
     link.href = "https://www.dropbox.com/scl/fi/ganttsfaow28jez5xnu5a/Jules_Gaia_-_Break_Fast_73401343.mp3?rlkey=8p31k0awbm38pftoi7n0mqabj&dl=1";
-    link.download = "Jules_Gaia_-_Break_Fast.mp3";
+    link.download = "Jules_Gaia_-_Break_Fast_73401343.mp3";
+    link.click();
+}
+function downloadAudio3() {
+    const link = document.createElement("a");
+    link.href = "https://www.dropbox.com/scl/fi/si1at65xnkt3ctcuyibt0/The-Fly-Guy-Five-Extra-Fries.mp3?rlkey=zcp42de17gfc3u9q777q9tyt5&dl=1";
+    link.download = "The-Fly-Guy-Five-Extra-Fries.mp3";
     link.click();
 }
 
@@ -111,6 +111,7 @@ const translations = {
     "en": { site: "DenkerSite", title: "Music", subtitle: "Music for videos", download: "Download" }
 };
 
+// Установка языка
 function setLanguage(lang) {
     localStorage.setItem("siteLang", lang);
     document.getElementById("siteName").innerText = translations[lang].site;
@@ -118,13 +119,14 @@ function setLanguage(lang) {
     document.getElementById("pageSubtitle").innerText = translations[lang].subtitle;
     document.getElementById("downloadBtn1").innerText = translations[lang].download;
     document.getElementById("downloadBtn2").innerText = translations[lang].download;
+    document.getElementById("downloadBtn3").innerText = translations[lang].download;
     document.getElementById("langSelect").value = lang;
 }
 
 window.onload = function() {
     let savedLang = localStorage.getItem("siteLang") || "en";
     setLanguage(savedLang);
-}
+};
 </script>
 </head>
 
@@ -141,22 +143,31 @@ window.onload = function() {
 <div class="page-title" id="pageTitle">Music</div>
 <div class="page-subtitle" id="pageSubtitle">Music for videos</div>
 
-<!-- Музыка 1 -->
+<!-- Первый трек -->
 <div class="music-player">
-  <audio controls>
-    <source src="https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?rlkey=2zivvcziwzoepmepbtx6abl0c&dl=1" type="audio/mpeg">
-    Ваш браузер не поддерживает аудио.
-  </audio>
-  <button id="downloadBtn1" class="download-button" onclick="downloadAudio1()">Скачать</button>
+    <audio controls>
+        <source src="https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?rlkey=2zivvcziwzoepmepbtx6abl0c&dl=1" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио.
+    </audio>
+    <button id="downloadBtn1" class="download-button" onclick="downloadAudio1()">Скачать</button>
 </div>
 
-<!-- Музыка 2 -->
+<!-- Второй трек -->
 <div class="music-player">
-  <audio controls>
-    <source src="https://www.dropbox.com/scl/fi/ganttsfaow28jez5xnu5a/Jules_Gaia_-_Break_Fast_73401343.mp3?rlkey=8p31k0awbm38pftoi7n0mqabj&dl=1" type="audio/mpeg">
-    Ваш браузер не поддерживает аудио.
-  </audio>
-  <button id="downloadBtn2" class="download-button" onclick="downloadAudio2()">Скачать</button>
+    <audio controls>
+        <source src="https://www.dropbox.com/scl/fi/ganttsfaow28jez5xnu5a/Jules_Gaia_-_Break_Fast_73401343.mp3?rlkey=8p31k0awbm38pftoi7n0mqabj&dl=1" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио.
+    </audio>
+    <button id="downloadBtn2" class="download-button" onclick="downloadAudio2()">Скачать</button>
+</div>
+
+<!-- Третий трек -->
+<div class="music-player">
+    <audio controls>
+        <source src="https://www.dropbox.com/scl/fi/si1at65xnkt3ctcuyibt0/The-Fly-Guy-Five-Extra-Fries.mp3?rlkey=zcp42de17gfc3u9q777q9tyt5&dl=1" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио.
+    </audio>
+    <button id="downloadBtn3" class="download-button" onclick="downloadAudio3()">Скачать</button>
 </div>
 
 </body>

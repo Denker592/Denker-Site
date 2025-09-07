@@ -173,23 +173,29 @@ function goHome() {
 function goGames() {
     window.location.href = "https://denker592.github.io/Denker-Site/games/";
 }
+function goMusic() {
+    window.location.href = "https://denker592.github.io/Denker-Site/music";
+}
 
 // Переводы
 const translations = {
     "ru": {
         welcome: "Привет! Это все ссылки Denker'a",
         subscribe: "Подписывайтесь на все каналы! Ссылочки есть немного выше!",
-        games: "Игры"
+        games: "Игры",
+        music: "Музыка"
     },
     "uk": {
         welcome: "Привіт! Це всі посилання Denker'a",
         subscribe: "Підписуйтесь на всі канали! Посилання трохи вище!",
-        games: "Ігри"
+        games: "Ігри",
+        music: "Музика"
     },
     "en": {
         welcome: "Hello! These are all Denker's links",
         subscribe: "Subscribe to all channels! Links are just above!",
-        games: "Games"
+        games: "Games",
+        music: "Music"
     }
 };
 
@@ -199,6 +205,7 @@ function setLanguage(lang) {
     document.getElementById("welcome").innerText = translations[lang].welcome;
     document.getElementById("subscribe").innerText = translations[lang].subscribe;
     document.getElementById("gamesText").innerText = translations[lang].games;
+    document.getElementById("musicText").innerText = translations[lang].music;
     document.getElementById("langSelect").value = lang;
 }
 
@@ -254,9 +261,15 @@ window.onload = function() {
     Subscribe to all channels! Links are just above!
 </div>
 
+<!-- Кнопки -->
 <div class="square" onclick="goGames()">
-    <img src="https://i.ibb.co/cSXdw4pp/559-20250829135801.png" alt="Иконка">
+    <img src="https://i.ibb.co/cSXdw4pp/559-20250829135801.png" alt="Games">
     <div class="square-text" id="gamesText">Games</div>
+</div>
+
+<div class="square" onclick="goMusic()">
+    <img src="https://i.ibb.co/xqtMjy1Y/image.png" alt="Music">
+    <div class="square-text" id="musicText">Music</div>
 </div>
 
 </body>

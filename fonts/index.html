@@ -110,6 +110,7 @@ function setLanguage(lang) {
     document.getElementById("pageSubtitle").innerText = translations[lang].subtitle;
     document.getElementById("downloadBtn1").innerText = translations[lang].download;
     document.getElementById("downloadBtn2").innerText = translations[lang].download;
+    document.getElementById("downloadBtn3").innerText = translations[lang].download;
     document.getElementById("downloadBtn4").innerText = translations[lang].download;
     document.getElementById("langSelect").value = lang;
 }
@@ -149,12 +150,12 @@ window.onload = function() {
 <!-- Третий шрифт -->
 <div class="page-container">
     <img class="page-image" src="https://i.ibb.co/pvT95rj8/1298-20250907135419.png" alt="Minecraft Font">
-    <a class="download-button" href="https://denker592.github.io/Denker-Site/fonts/Minecraft%20Font.ttf" download>Скачать</a>
+    <a id="downloadBtn3" class="download-button" href="https://denker592.github.io/Denker-Site/fonts/Minecraft%20Font.ttf" download>Скачать шрифт</a>
 </div>
 
 <!-- Четвёртый шрифт -->
 <div class="page-container">
-    <img class="page-image" src="https://i.ibb.co/RGmtkq6y/1298-20250907141240.png" alt="Fredoka One Font">
+    <img class="page-image" src="https://i.ibb.co/RGmtkq6y/1298-20250907141240.png" alt="FredokaOne Font" style="max-width: 400px;">
     <a id="downloadBtn4" class="download-button" href="https://denker592.github.io/Denker-Site/fonts/FredokaOne.ttf" download>Скачать шрифт</a>
 </div>
 

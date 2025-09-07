@@ -110,7 +110,7 @@ function setLanguage(lang) {
     document.getElementById("siteName").innerText = translations[lang].site;
     document.getElementById("pageTitle").innerText = translations[lang].title;
     document.getElementById("pageSubtitle").innerText = translations[lang].subtitle;
-    for(let i=1; i<=7; i++) {
+    for(let i=1; i<=13; i++) {
         const btn = document.getElementById("downloadBtn"+i);
         if(btn) btn.innerText = translations[lang].download;
     }
@@ -137,7 +137,8 @@ window.onload = function() {
 <div class="page-title" id="pageTitle">Music</div>
 <div class="page-subtitle" id="pageSubtitle">Music for videos</div>
 
-<!-- Трек 1 -->
+<!-- Треки 1-8 -->
+
 <div class="music-player">
   <audio controls>
     <source src="https://denker592.github.io/Denker-Site/music/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3" type="audio/mpeg">
@@ -145,7 +146,6 @@ window.onload = function() {
   <button id="downloadBtn1" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3','Lucas_Pittman_-_Swagger_Stagger.mp3')">Download</button>
 </div>
 
-<!-- Трек 2 -->
 <div class="music-player">
   <audio controls>
     <source src="https://denker592.github.io/Denker-Site/music/Jules_Gaia_-_Break_Fast_73401343.mp3" type="audio/mpeg">
@@ -153,15 +153,13 @@ window.onload = function() {
   <button id="downloadBtn2" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Jules_Gaia_-_Break_Fast_73401343.mp3','Jules_Gaia_-_Break_Fast.mp3')">Download</button>
 </div>
 
-<!-- Трек 3 -->
 <div class="music-player">
   <audio controls>
     <source src="https://denker592.github.io/Denker-Site/music/The Fly Guy Five - Extra Fries.mp3" type="audio/mpeg">
   </audio>
-  <button id="downloadBtn3" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/The Fly Guy Five - Extra Fries.mp3','The-Fly-Guy-Five-Extra-Fries.mp3')">Download</button>
+  <button id="downloadBtn3" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/The Fly Guy Five - Extra Fries.mp3','The Fly Guy Five - Extra Fries.mp3')">Download</button>
 </div>
 
-<!-- Трек 4 -->
 <div class="music-player">
   <audio controls>
     <source src="https://denker592.github.io/Denker-Site/music/Faidherbe_Square_-_ProleteR.mp3" type="audio/mpeg">
@@ -169,7 +167,6 @@ window.onload = function() {
   <button id="downloadBtn4" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Faidherbe_Square_-_ProleteR.mp3','Faidherbe_Square_-_ProleteR.mp3')">Download</button>
 </div>
 
-<!-- Трек 5 -->
 <div class="music-player">
   <audio controls>
     <source src="https://denker592.github.io/Denker-Site/music/Kevin MacLeod - Jaunty Gumption (Happy).mp3" type="audio/mpeg">
@@ -177,20 +174,25 @@ window.onload = function() {
   <button id="downloadBtn5" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Kevin MacLeod - Jaunty Gumption (Happy).mp3','Kevin-MacLeod-Jaunty-Gumption-Happy.mp3')">Download</button>
 </div>
 
-<!-- Трек 6 -->
 <div class="music-player">
   <audio controls>
     <source src="https://denker592.github.io/Denker-Site/music/Kevin MacLeod - Barroom Ballet Silent Film Light (Happy).mp3" type="audio/mpeg">
   </audio>
-  <button id="downloadBtn6" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Kevin MacLeod - Barroom Ballet Silent Film Light (Happy).mp3','Kevin-MacLeod-Barroom-Ballet-Silent-Film-Light-Happy.mp3')">Download</button>
+  <button id="downloadBtn6" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Kevin MacLeod - Barroom Ballet Silent Film Light (Happy).mp3','Kevin-MacLeod-Barroom-Ballet.mp3')">Download</button>
 </div>
 
-<!-- Трек 7 -->
 <div class="music-player">
   <audio controls>
     <source src="https://denker592.github.io/Denker-Site/music/Michael_Curtis_-_No_63305223.mp3" type="audio/mpeg">
   </audio>
-  <button id="downloadBtn7" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Michael_Curtis_-_No_63305223.mp3','Michael_Curtis_-_No.mp3')">Download</button>
+  <button id="downloadBtn7" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/Michael_Curtis_-_No_63305223.mp3','Michael_Curtis-No_63305223.mp3')">Download</button>
+</div>
+
+<div class="music-player">
+  <audio controls>
+    <source src="https://denker592.github.io/Denker-Site/music/GP-Jack_Wang_-_Darkness_of_Light_73270445.mp3" type="audio/mpeg">
+  </audio>
+  <button id="downloadBtn8" class="download-button" onclick="downloadFile('https://denker592.github.io/Denker-Site/music/GP-Jack_Wang_-_Darkness_of_Light_73270445.mp3','GP-Jack_Wang-Darkness_of_Light.mp3')">Download</button>
 </div>
 
 </body>

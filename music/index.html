@@ -19,9 +19,8 @@ body {
     background-color: #007BFF;
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding-left: 20px;
     justify-content: space-between;
-    box-sizing: border-box;
 }
 .top-bar span {
     color: white;
@@ -30,6 +29,7 @@ body {
     cursor: pointer;
 }
 .lang-select {
+    margin-right: 20px;
     font-size: 16px;
     padding: 5px;
     border-radius: 8px;
@@ -38,95 +38,78 @@ body {
 }
 .page-title {
     text-align: center;
-    font-size: 48px;
+    font-size: 36px; /* Сделал больше, но оставил шрифт Arial как раньше */
     color: #000;
-    margin: 20px auto 10px auto;
+    margin: 20px auto;
 }
-.page-subtitle {
-    text-align: center;
-    font-size: 18px;
-    color: #333;
-    margin: 0 auto 30px auto;
-}
-.music-player {
+.track-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
-.download-button {
-    background-color: white;
-    color: #000;
-    font-size: 20px;
+.audio-player {
+    width: 90%; /* максимально широкие */
+    max-width: 500px;
+}
+.download-btn {
+    margin-top: 5px;
+    font-size: 18px;
     font-weight: bold;
-    padding: 8px 20px;
+    padding: 10px 20px;
     border: 2px solid #000;
     border-radius: 12px;
+    background-color: white;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.download-button:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+.download-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 @media (max-width: 600px) {
-    .top-bar span { font-size: 22px; }
-    .page-title { font-size: 36px; }
-    .page-subtitle { font-size: 16px; }
-    .download-button { font-size: 16px; padding: 6px 16px; }
+    .top-bar {
+        height: 60px;
+        padding-left: 10px;
+    }
+    .top-bar span {
+        font-size: 22px;
+    }
+    .page-title {
+        font-size: 28px;
+        margin: 15px auto;
+    }
+    .audio-player {
+        width: 95%;
+    }
 }
 </style>
 
 <script>
-// Переключение на главную
 function goHome() {
     window.location.href = "https://denker592.github.io/Denker-Site/";
 }
 
-// Скачивание аудио
-function downloadAudio1() {
-    const link = document.createElement("a");
-    link.href = "https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?rlkey=2zivvcziwzoepmepbtx6abl0c&dl=1";
-    link.download = "Lucas_Pittman_-_Swagger_Stagger_72773217.mp3";
-    link.click();
-}
-function downloadAudio2() {
-    const link = document.createElement("a");
-    link.href = "https://www.dropbox.com/scl/fi/ganttsfaow28jez5xnu5a/Jules_Gaia_-_Break_Fast_73401343.mp3?rlkey=8p31k0awbm38pftoi7n0mqabj&dl=1";
-    link.download = "Jules_Gaia_-_Break_Fast_73401343.mp3";
-    link.click();
-}
-function downloadAudio3() {
-    const link = document.createElement("a");
-    link.href = "https://www.dropbox.com/scl/fi/si1at65xnkt3ctcuyibt0/The-Fly-Guy-Five-Extra-Fries.mp3?rlkey=zcp42de17gfc3u9q777q9tyt5&dl=1";
-    link.download = "The-Fly-Guy-Five-Extra-Fries.mp3";
-    link.click();
-}
-
 // Переводы
 const translations = {
-    "ru": { site: "DenkerSite", title: "Музыка", subtitle: "Музыка для видео", download: "Скачать" },
-    "uk": { site: "DenkerSite", title: "Музика", subtitle: "Музика для відео", download: "Завантажити" },
-    "en": { site: "DenkerSite", title: "Music", subtitle: "Music for videos", download: "Download" }
+    "ru": { site: "DenkerSite", title: "Музыка", download: "Скачать" },
+    "uk": { site: "DenkerSite", title: "Музика", download: "Завантажити" },
+    "en": { site: "DenkerSite", title: "Music", download: "Download" }
 };
 
-// Установка языка
 function setLanguage(lang) {
     localStorage.setItem("siteLang", lang);
     document.getElementById("siteName").innerText = translations[lang].site;
     document.getElementById("pageTitle").innerText = translations[lang].title;
-    document.getElementById("pageSubtitle").innerText = translations[lang].subtitle;
-    document.getElementById("downloadBtn1").innerText = translations[lang].download;
-    document.getElementById("downloadBtn2").innerText = translations[lang].download;
-    document.getElementById("downloadBtn3").innerText = translations[lang].download;
+    const btns = document.querySelectorAll(".download-btn");
+    btns.forEach(btn => btn.innerText = translations[lang].download);
     document.getElementById("langSelect").value = lang;
 }
 
 window.onload = function() {
     let savedLang = localStorage.getItem("siteLang") || "en";
     setLanguage(savedLang);
-};
+}
 </script>
 </head>
 
@@ -141,33 +124,29 @@ window.onload = function() {
 </div>
 
 <div class="page-title" id="pageTitle">Music</div>
-<div class="page-subtitle" id="pageSubtitle">Music for videos</div>
 
-<!-- Первый трек -->
-<div class="music-player">
-    <audio controls>
-        <source src="https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?rlkey=2zivvcziwzoepmepbtx6abl0c&dl=1" type="audio/mpeg">
+<div class="track-container">
+    <audio class="audio-player" controls>
+        <source src="https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?dl=1" type="audio/mpeg">
         Ваш браузер не поддерживает аудио.
     </audio>
-    <button id="downloadBtn1" class="download-button" onclick="downloadAudio1()">Скачать</button>
+    <button class="download-btn" onclick="window.open('https://www.dropbox.com/scl/fi/7uzwxu4ncgcj58plbam3k/Lucas_Pittman_-_Swagger_Stagger_72773217.mp3?dl=1', '_blank')">Download</button>
 </div>
 
-<!-- Второй трек -->
-<div class="music-player">
-    <audio controls>
-        <source src="https://www.dropbox.com/scl/fi/ganttsfaow28jez5xnu5a/Jules_Gaia_-_Break_Fast_73401343.mp3?rlkey=8p31k0awbm38pftoi7n0mqabj&dl=1" type="audio/mpeg">
+<div class="track-container">
+    <audio class="audio-player" controls>
+        <source src="https://www.dropbox.com/scl/fi/ganttsfaow28jez5xnu5a/Jules_Gaia_-_Break_Fast_73401343.mp3?dl=1" type="audio/mpeg">
         Ваш браузер не поддерживает аудио.
     </audio>
-    <button id="downloadBtn2" class="download-button" onclick="downloadAudio2()">Скачать</button>
+    <button class="download-btn" onclick="window.open('https://www.dropbox.com/scl/fi/ganttsfaow28jez5xnu5a/Jules_Gaia_-_Break_Fast_73401343.mp3?dl=1', '_blank')">Download</button>
 </div>
 
-<!-- Третий трек -->
-<div class="music-player">
-    <audio controls>
-        <source src="https://www.dropbox.com/scl/fi/si1at65xnkt3ctcuyibt0/The-Fly-Guy-Five-Extra-Fries.mp3?rlkey=zcp42de17gfc3u9q777q9tyt5&dl=1" type="audio/mpeg">
+<div class="track-container">
+    <audio class="audio-player" controls>
+        <source src="https://www.dropbox.com/scl/fi/si1at65xnkt3ctcuyibt0/The-Fly-Guy-Five-Extra-Fries.mp3?dl=1" type="audio/mpeg">
         Ваш браузер не поддерживает аудио.
     </audio>
-    <button id="downloadBtn3" class="download-button" onclick="downloadAudio3()">Скачать</button>
+    <button class="download-btn" onclick="window.open('https://www.dropbox.com/scl/fi/si1at65xnkt3ctcuyibt0/The-Fly-Guy-Five-Extra-Fries.mp3?dl=1', '_blank')">Download</button>
 </div>
 
 </body>
